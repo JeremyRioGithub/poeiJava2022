@@ -14,6 +14,10 @@ class Ligne {
         this.prixUnitaire = pu;
         this.quantite = qte;
     }
+    public Integer setLigne (Integer value) {
+        nbrLigne = value;
+        return nbrLigne;
+    }
 
     public void afficheLigne() {
         nbrLigne++;
@@ -66,6 +70,10 @@ class TicketCaissePOO {
         t1.afficher();
         System.out.println(String.format("nbr Articles %d", Ligne.nbrLigne));
         
+        Ligne l1 = new Ligne("",0.0,0.0);
+        l1.setLigne(0);
+        //System.out.println(String.format("Nombre de Lignes: %d", l1.setLigne(0)));
+
         Ticket t2 = new Ticket("TONTON", 5125);
         t2.addAchat(new Ligne("ruby", 1500.0, 0.1));
         t2.addAchat(new Ligne("or", 2253.0, 0.78));
