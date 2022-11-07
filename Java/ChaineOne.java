@@ -12,7 +12,7 @@ class ChaineOne {
 
     public static void main(String[] args)
     {
-        CenterString("+------------+", "bonjour");
+        CenterString("+------------+", "bonjour Jeremy");
     }
 }
 
