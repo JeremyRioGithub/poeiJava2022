@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 
 class Ligne {
-    String label    = "";
-    Double prixUnitaire       = 0.0;
-    Double quantite      = 0.0;
+    private String label    = "";
+    private Double prixUnitaire       = 0.0;
+    private Double quantite      = 0.0;
 
     static Integer nbrLigne = 0;
-    static Integer nbrArticles = 0;
+    private static Integer nbrArticles = 0;
     
     public Ligne (String nom, Double pu, Double qte) {
         this.label = nom;
@@ -17,6 +17,9 @@ class Ligne {
     public Integer setLigne (Integer value) {
         nbrLigne = value;
         return nbrLigne;
+    }
+    public void getLigne () {
+        System.out.println(nbrLigne);
     }
 
     public void afficheLigne() {
@@ -57,11 +60,11 @@ class Ticket {
 
 class TicketCaissePOO {
 
-    static ArrayList<Ligne> lignes  = new ArrayList<>();
-
     public static void main(String[] args) {
-
         
+        Ligne l1 = new Ligne("",0.0,0.0);
+        l1.getLigne();
+
         Ticket t1 = new Ticket("toto", 5124);
         t1.addAchat(new Ligne("rutabaga", 1.5, 5.0));
         t1.addAchat(new Ligne("choux de Bruxelles", 4.50, 1.0));
@@ -70,8 +73,9 @@ class TicketCaissePOO {
         t1.afficher();
         System.out.println(String.format("nbr Articles %d", Ligne.nbrLigne));
         
-        Ligne l1 = new Ligne("",0.0,0.0);
+        l1.getLigne();
         l1.setLigne(0);
+        l1.getLigne();
         //System.out.println(String.format("Nombre de Lignes: %d", l1.setLigne(0)));
 
         Ticket t2 = new Ticket("TONTON", 5125);
@@ -81,6 +85,7 @@ class TicketCaissePOO {
         t2.addAchat(new Ligne("diamant", 3325.0, 0.02));
         t2.afficher();
         System.out.println(String.format("nbr Articles %d", Ligne.nbrLigne));
+        l1.getLigne();
 
 
         /*
