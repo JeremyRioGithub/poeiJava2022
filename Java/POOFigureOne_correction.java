@@ -34,7 +34,7 @@ class Cercle extends Point
 
 
 
-class  POOFigureOne {
+class  POOFigureOne_correction {
     // Xavier
 
     public static void main(String[] args) 
