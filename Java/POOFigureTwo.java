@@ -2,7 +2,6 @@
 abstract interface Figure{
     abstract public void move(int x, int y);
     abstract public Integer surface();
-
 }
 class Point {
     Integer x, y;
@@ -32,6 +31,7 @@ class Cercle implements Figure{
     }
     public Integer surface(){
         Integer i = (int)(this.rayon * this.rayon * 3.14);
+        System.out.println(i);
         return i;
     }
     public void move(int dx, int dy){

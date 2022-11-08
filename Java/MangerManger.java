@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+
+import javax.swing.plaf.synth.SynthScrollPaneUI;
+
 class Animaux{
-    String ferme="";
     String nom="";
     String mange="";
+    String ferme="";
     public Animaux(String ferme, String nom, String mange){
         this.ferme=ferme;
         this.nom=nom;
@@ -23,12 +27,38 @@ class Classe extends Animaux{
 
 }
 
+class Ferme{
+    String nom="";
+    ArrayList<Animaux> animals = new ArrayList<Animaux>();
+    ArrayList<Classe> classes = new ArrayList<Classe>();
+    public Ferme(String nom){
+        this.nom=nom;
+    }
+    public String getFermeName(){
+        return this.nom;
+    }
+    public void addAnimal(Animaux animal){
+        animals.add(animal);
+    }
+    public void addClasse(Classe classe){
+        classes.add(classe);
+    }
+    public void afficher(){
+        for (Animaux animal : animals){
+            animal.aTable();
+        }
+        for (Classe classe : classes){
+            classe.aTable();
+        }
+    }
+}
+
 public class MangerManger {
     public static void main(String[] args){
-        Animaux a1 = new Animaux("KFC", "poule", "graines");
-        a1.aTable();
-        Classe c1 = new Classe("Burkerking", "vache", "herbe", "mammifere");
-        c1.aTable();
+        Ferme f1= new Ferme("KFCfarm");
+        f1.addAnimal(new Animaux("KFC","poule", "graines"));
+        f1.addAnimal(new Classe("Burgerking","vache", "herbe", "mammifere"));
+        f1.afficher();
         // aTable() doit renvoyer poule:graines, vache:herbe, etc.
         // la vache est un mammifere, les animaux vivent dans une ferme
         // contrainte: reduire le code au maximum.
