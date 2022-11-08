@@ -21,6 +21,9 @@ class Ligne {
     public void getLigne () {
         System.out.println(nbrLigne);
     }
+    public Double getTotalLigne() {
+        return this.prixUnitaire*this.quantite;
+    }
 
     public void afficheLigne() {
         nbrLigne++;
@@ -47,6 +50,13 @@ class Ticket {
     public void addAchat(Ligne l){
         lignes.add(l);
     }
+    private Double calculTotal() {
+        Double res=0.0;
+        for (Ligne l : lignes) {
+            res += l.getTotalLigne();
+        }
+        return res;
+    }
 
     public void afficher() {
         TicketNbr++;
@@ -54,6 +64,7 @@ class Ticket {
         for (Ligne l : lignes) {
             l.afficheLigne();
         }
+        System.out.println(calculTotal());
     }
 
 }
@@ -66,10 +77,10 @@ class TicketCaissePOO {
         l1.getLigne();
 
         Ticket t1 = new Ticket("toto", 5124);
-        t1.addAchat(new Ligne("rutabaga", 1.5, 5.0));
-        t1.addAchat(new Ligne("choux de Bruxelles", 4.50, 1.0));
-        t1.addAchat(new Ligne("réglisse", 3.0, 2.1));
-        t1.addAchat(new Ligne("bettes", 2.4, 1.0));
+        t1.addAchat(new Ligne("rutabaga", 1.0, 1.0));
+        t1.addAchat(new Ligne("choux de Bruxelles", 2.0, 0.5));
+        t1.addAchat(new Ligne("réglisse", 4.0, 0.25));
+        t1.addAchat(new Ligne("bettes", 5.0, 0.2));
         t1.afficher();
         System.out.println(String.format("nbr Articles %d", Ligne.nbrLigne));
         
@@ -86,6 +97,7 @@ class TicketCaissePOO {
         t2.afficher();
         System.out.println(String.format("nbr Articles %d", Ligne.nbrLigne));
         l1.getLigne();
+
 
 
         /*
