@@ -1,9 +1,9 @@
 
 class Point
 {
-    protected Integer x, y;
+    Integer x, y;
 
-    public Point( int x, int y )
+    public Point( Integer x, Integer y )
     {
         this.x = x;
         this.y = y;
@@ -17,9 +17,9 @@ class Point
 
 class Cercle extends Point
 {
-    int rayon;
+    Integer rayon;
 
-    public Cercle( int x, int y, int r )
+    public Cercle( Integer x, Integer y, Integer r )
     {
         super(x, y);
         this.rayon = r;
@@ -48,7 +48,7 @@ class  POOFigureOne_correction {
         c1.affiche();
         // (5, 6)
 
-        Carre k1 = new Carre( 18, -3, 15 );
+        Carre k1 = new Carre( 18, 3, 15 );
         k1.affiche();
         // Carre : (5, 6) cote=15
         Rectangle r1 = new Rectangle( 3, 19, 99, 18 );
