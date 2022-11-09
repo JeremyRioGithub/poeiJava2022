@@ -1,9 +1,9 @@
 
-class Point
+class PointCorr
 {
     Integer x, y;
 
-    public Point( Integer x, Integer y )
+    public PointCorr( Integer x, Integer y )
     {
         this.x = x;
         this.y = y;
@@ -11,11 +11,11 @@ class Point
 
     public void affiche()
     {
-        System.out.println( String.format( "Point : (%d, %d)", this.x, this.y ) );
+        System.out.println( String.format( "PointCorr : (%d, %d)", this.x, this.y ) );
     }
 }
 
-class Cercle extends Point
+class Cercle extends PointCorr
 {
     Integer rayon;
 
@@ -40,7 +40,7 @@ class  POOFigureOne_correction {
     public static void main(String[] args) 
     {
 
-        Point p1 = new Point( 5, 6 );
+        PointCorr p1 = new PointCorr( 5, 6 );
         p1.affiche();
         // (5, 6)
 

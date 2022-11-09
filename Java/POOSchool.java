@@ -24,7 +24,7 @@ class Employee extends Person{
 }
 
 class Principal extends Employee{
-    String desPrincipal="et je suis responsable de l'etablissement et de ses employés";
+    String desPrincipal=" et je suis responsable de l'etablissement et de ses employés";
     public Principal(String name){
         super(name);
     }
@@ -35,7 +35,7 @@ class Principal extends Employee{
 }
 
 class Teacher extends Employee{
-    String desTeacher="et je donne des lecons";
+    String desTeacher=" et je donne des lecons";
     String lesson="first lesson";
     public Teacher(String name, String lesson){
         super(name);
@@ -59,7 +59,7 @@ class Volunteer extends Person{
 }
 
 class Kitchen extends Volunteer{
-    String desKitchen="et je fait la cuisine";
+    String desKitchen=" et je fait la cuisine";
     public Kitchen(String name){
         super(name);
     }
@@ -70,7 +70,7 @@ class Kitchen extends Volunteer{
 }
 
 class Cleaning extends Volunteer{
-    String desCleaning="et je nettoie les salles";
+    String desCleaning=" et je nettoie les salles";
     public Cleaning(String name){
         super(name);
     }
@@ -81,7 +81,7 @@ class Cleaning extends Volunteer{
 }
 
 class Student extends Person{
-    String desStudent="et je vais à des cours à l'école";
+    String desStudent=" et je vais à des cours à l'école";
     String grade="";
     public Student(String name,String grade){
         super(name);

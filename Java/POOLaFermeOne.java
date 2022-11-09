@@ -102,6 +102,7 @@ public class POOLaFermeOne {
 
         Animal animal=f1.appeler("Marguerite");
         animal.nom = "Margotte";
+        f1.aTable();
         v1.nom = "MArgueeeeurite";
         f1.aTable();
     }
