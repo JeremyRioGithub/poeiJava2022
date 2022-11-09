@@ -42,17 +42,26 @@ class School {
         }
         return null;
     }
-    
-    public static ArrayList<Student> getStudentsList(){
+
+    public static ArrayList<Student> getStudentsList() {
         ArrayList<Student> students = new ArrayList<Student>();
         for (Person person : persons) {
             if (person.getClass().getSimpleName().equals("Student")) {
-                students.add((Student)person);
+                students.add((Student) person);
             }
         }
         return students;
     }
-    
+
+    public static ArrayList<Teacher> getTeachersList() {
+        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+        for (Person person : persons) {
+            if (person.getClass().getSimpleName().equals("Teacher")) {
+                teachers.add((Teacher) person);
+            }
+        }
+        return teachers;
+    }
 
 }
 
@@ -107,11 +116,13 @@ class Principal extends Employee {
 class Teacher extends Employee {
     private String lesson;
     static Integer teachersCount = 0;
+    protected Grade grade;
 
     // constructeur
-    public Teacher(String name, Double salary, String lesson) {
+    public Teacher(String name, Double salary, String lesson, Grade grade) {
         super(name, salary);
         this.lesson = lesson;
+        this.grade = grade;
         teachersCount++;
     }
 
@@ -168,11 +179,13 @@ class Kitchen extends Volunteer {
 }
 
 class Student extends Person {
+    ArrayList<Mark> marks = new ArrayList<>();
     protected Grade grade;
+
     // constructeur
     public Student(String name, Grade grade) {
         super(name);
-        this.grade=grade;
+        this.grade = grade;
     }
 
     public void whoAmI() {
@@ -183,11 +196,32 @@ class Student extends Person {
     public String toString() {
         return (String) this.name;
     }
+
+    public void addMark(Mark mark) {
+        marks.add(mark);
+    }
+
+    public ArrayList<Double> getAllMarks() {
+        ArrayList<Double> allMarks = new ArrayList<>();
+        for (Mark m : marks) {
+            allMarks.add(m.number);
+        }
+        return allMarks;
+    }
+
+    public Double getAverage() {
+        ArrayList<Double> allMarks = this.getAllMarks();
+        Double total = 0.00;
+        for (Double number : allMarks) {
+            total += number;
+        }
+        return Double.isNaN((total / marks.size())) ? 0.0 : total / marks.size();
+    }
 }
 
 class Grade {
     protected String name;
-    //ArrayList<Person> persons = new ArrayList<>();
+    // ArrayList<Person> persons = new ArrayList<>();
 
     // static Integer gradeCount = 0;
     public Grade(String name) {
@@ -196,15 +230,31 @@ class Grade {
     }
 
     public void getPersonsByGrade() {
+        System.out.println(String.format("le professeur de la classe %s :", this.name));
+        for (Teacher teacher : School.getTeachersList()) {
+            if (this.name.equals(teacher.grade.name)) { // PB: ne peut pas recuperer le grade de Student, car person ne
+                                                        // contient pas la variable "grade"
+                teacher.whoAmI();
+            }
+        }
         System.out.println(String.format("les eleves de la classe %s :", this.name));
         for (Student student : School.getStudentsList()) {
-                if (this.name.equals(student.grade.name)){ // PB: ne peut pas recuperer le grade de Student, car person ne contient pas la variable "grade"
-                    System.out.println("Student:");
-                    student.whoAmI();
-                }
+            if (this.name.equals(student.grade.name)) { // PB: ne peut pas recuperer le grade de Student, car person ne
+                                                        // contient pas la variable "grade"
+                student.whoAmI();
+            }
         }
     }
 
+}
+
+class Mark {
+    Double number;
+
+    // constructeur
+    public Mark(Double number) {
+        this.number = number;
+    }
 }
 
 class POOSchool {
@@ -214,16 +264,29 @@ class POOSchool {
         School school1 = new School("Collège Sainte-Marie");
         school1.addPerson(new Student("Louis", grade1));
         school1.addPerson(new Principal("Gérard", 1600.00));
-        school1.addPerson(new Teacher("Mme Lecoq", 1600.00, "SVT"));
+        school1.addPerson(new Teacher("Mme Lecoq", 1600.00, "SVT", grade1));
         school1.addPerson(new Kitchen("Roger"));
         school1.addPerson(new Cleaning("Jacques"));
         school1.addPerson(new Student("Jean", new Grade("6eB")));
 
-        //school1.ringBell();
+        /*
+         * school1.ringBell();
+         * 
+         * Person person = school1.getPersonByName("Louis");
+         * person.whoAmI();
+         */
+        // add notes to student, and return mean + all notes
+        Student student1 = new Student("Paul", grade1);
+        student1.addMark(new Mark(15.00));
+        student1.addMark(new Mark(16.50));
+        student1.addMark(new Mark(14.00));
+        student1.addMark(new Mark(12.50));
+        System.out.println(student1.getAverage());
+        System.out.println(student1.getAllMarks());
+        // ajouter cet etudiant
+        school1.addPerson(student1);
 
-        //Person person = school1.getPersonByName("Louis");
-        //person.whoAmI();
-
+        // get grades of grade "5eb":
         grade1.getPersonsByGrade();
     }
 }
