@@ -107,6 +107,9 @@ class School{
     public Person getPersonByName(String name){
         for (Person person : persons){
             if (person.name.equals(name)){
+                System.out.println("");
+                person.whoAmI();
+                System.out.println("");
                 return person;
             }
         }
@@ -137,12 +140,12 @@ public class POOSchool {
         (new School()).addPerson(s1);
 
         sc1.ringBell(); // ringbell returns the description of each person of the school
-/*
-        Person person=sc1.getPersonByName("Gabrielle Russier"); // renames 
+
+        Person person=sc1.getPersonByName("Gabrielle Russier"); // renames Person name = "Gabrielle Russier"
         person.name = "Gabriel R.";
-        sc1.ringBell();
+        System.out.println(String.format("person.name, %s", person.name));
         t1.name = "G. R.";
-        sc1.ringBell();
-        */
+        System.out.println(String.format("person.name, %s ; t1.name %s", person.name, t1.name));
+
     }
 }
