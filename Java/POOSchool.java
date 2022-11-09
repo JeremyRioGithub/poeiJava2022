@@ -275,6 +275,7 @@ class POOSchool {
          * Person person = school1.getPersonByName("Louis");
          * person.whoAmI();
          */
+        
         // add notes to student, and return mean + all notes
         Student student1 = new Student("Paul", grade1);
         student1.addMark(new Mark(15.00));
