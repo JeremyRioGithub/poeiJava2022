@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+// from Xavier
 class Note
 {
     String matiere;
@@ -13,7 +13,7 @@ class Note
 
     @Override
     public String toString() {
-        return "(" + matiere + ", " + note + ")";
+        return matiere + ": " + note;
     } 
 }
 
@@ -33,9 +33,9 @@ class CarnetNotes
         String res = "";
         for (Note n : this.notes) {
             res += n;
-            res += "<>";
+            res += ", ";
         }
-        return "[" + res + "]";
+        return res;
     }
 }
 
@@ -216,18 +216,8 @@ class Pion extends Staff {
     }
 }
 
-/*
- *********************************************************************************************************** 
-*/
-
-
-
 class POOEcoleOne {
-    // Xavier
-
-    public static void main(String[] args) {
-
-
+    public static void ajouterEcoleJaures(){
         Ecole jaures = new Ecole();
 
         // ajout des eleves
@@ -247,6 +237,7 @@ class POOEcoleOne {
         jaures.ajouterKlasse( new Klasse( "primevère", "CE2",(Prof)jaures.chercherIndividus("Marie") ) );
         jaures.ajouterKlasse( new Klasse( "tulipe", "CP",(Prof)jaures.chercherIndividus("Joseph") ) );
 
+                
         /*
          * =======================================================================
          */
@@ -304,5 +295,52 @@ class POOEcoleOne {
         }
         
         //jaures.sonnerOuverture();
+    }
+    public static void ajouterEcoleSaintMartin(){
+        Ecole saintMartin = new Ecole();
+        saintMartin.ajouterPersonne(new Cuisinier("Ratatouille", 1200));
+        saintMartin.ajouterPersonne(new Eleve("toubib"));
+        saintMartin.ajouterPersonne(new Eleve("toubob"));
+        saintMartin.ajouterPersonne(new Eleve("toubub"));
+        saintMartin.ajouterPersonne(new Prof("Marcel Conche", 1250));
+        saintMartin.ajouterPersonne(new Prof("Louis Jouvet", 1251));
+        saintMartin.ajouterPersonne(new Prof("Guy Carcassonne", 1252));
+        saintMartin.ajouterKlasse(new Klasse("Camus", "quatrieme", (Prof)saintMartin.chercherIndividus("Marcel Conche"))); // J'ajoute un prof d'une ecole differente ><
+        saintMartin.ajouterKlasse(new Klasse("Pharell", "cinquieme", (Prof)saintMartin.chercherIndividus("Louis Jouvet"))); // J'ajoute un prof d'une ecole differente ><
+        saintMartin.ajouterKlasse(new Klasse("Pharell", "cinquieme", (Prof)saintMartin.chercherIndividus("Guy Carcassonne"))); // J'ajoute un prof d'une ecole differente ><
+        Klasse handle;
+        handle = saintMartin.chercherKlasse("Camus");
+        handle.ajouterEleve( (Eleve)saintMartin.chercherIndividus("toubib")  );
+        handle.ajouterEleve( (Eleve)saintMartin.chercherIndividus("toubob")  );
+        handle = saintMartin.chercherKlasse("Pharell");
+        handle.ajouterEleve( (Eleve)saintMartin.chercherIndividus("toubub")  );
+        System.out.println(  "==================================");
+
+        //saintMartin.chercherKlasse( "Camus").affiche();  
+        //saintMartin.chercherKlasse( "Pharell").affiche();  
+        //System.out.println(  "==================================");
+
+        Eleve e1 = (Eleve)saintMartin.chercherIndividus( "toubub" ); 
+        e1.ajouterNote( "Arts Plastique", 5);
+        e1.ajouterNote( "Algebre", 1);
+        e1.ajouterNote( "Informatique", 3);
+        System.out.println( e1 );
+        System.out.println(  "==================================");
+
+        saintMartin.chercherKlasse( "Pharell").affiche();  
+        System.out.println(  "==================================");
+
+        ArrayList<Eleve> lesEleves = saintMartin.listerEleve();
+        for (Eleve eleve : lesEleves) {
+            System.out.println(eleve);
+        }
+    }
+    
+    public static void main(String[] args) {
+
+        //ajouterEcoleJaures();
+        ajouterEcoleSaintMartin();
+        
+
     }
 }
