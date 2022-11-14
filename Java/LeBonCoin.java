@@ -23,6 +23,7 @@ class LeBonCoin {
         System.out.print(maison + "\t");
         maison.afficher();
 
+        /*
         // Utilisation du calcul sur le prix de voiture en tant qu'entier:
         String totalPrice="";
         Integer calculs=Integer.parseInt(voiture.prix) * 2;
@@ -34,22 +35,21 @@ class LeBonCoin {
         Double calculs2=(Float.parseFloat(voiture.prix+".0") * 2.1);
         totalPrice2 = Double.toString(calculs2);
         System.out.println(String.format("(voiture.prix)*2=%s", totalPrice2));
-
-        /* // Avec la saisie :
-        System.out.println("nouvelle Annonce Base: \t");
-        Annonce annonce1 = new Annonce();
-        annonce1.saisie(sc1);
-        System.out.println("nouvelle Annonce Voiture: \t");
-        AnnonceVoiture voiture1 = new AnnonceVoiture();
-        voiture1.saisie(sc1);
-
-        
-        System.out.print(annonce1 + "\t");
-        annonce1.afficher();
-        System.out.print(voiture1 + "\t");
-        voiture1.afficher();
         */
         
+        System.out.println("nouvelle Annonce: \t");
+        Annonce a=new Annonce();
+        String annonce=sc1.nextLine();
+        if (annonce.equals("voiture")){
+            a=new AnnonceVoiture();
+        }
+        else if (annonce.equals("maison")){
+            a=new AnnonceMaison();
+        }
+        a.saisie(sc1);
+        System.out.print(a + "\t");
+        a.afficher();
+
         sc1.close();
     }
 }
