@@ -1,14 +1,18 @@
 package annonces;
 
 public class Annonce {
-    String name="";
-    public Annonce(String name) {
-        this.name=name;
+    String titre="No title";
+    Integer prix=-1;
+    String descriptif="No description";
+    public Annonce(String titre, Integer prix, String descriptif) {
+        this.titre=String.format("<< %s >>", titre);
+        this.prix=prix;
+        this.descriptif=String.format("[ %s ]", descriptif);;
     }
     public String toString() {
-        return "'je suis une annonce de base'";
+        return String.format("%s (%d)", this.titre, this.prix);
     }
     public void afficher(){
-        System.out.println(String.format("annonce Base : '%s'", name));
+        System.out.println(String.format("%s", this.descriptif));
     }
 }

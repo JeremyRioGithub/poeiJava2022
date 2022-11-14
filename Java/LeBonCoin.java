@@ -1,19 +1,19 @@
 import annonces.*;
 class LeBonCoin {
     public static void main(String[] args) {
-        System.out.print("annonce de Base ? : ");
-        Annonce base= new Annonce("base-1");
-        System.out.println(base);
+        System.out.print("annonce de Base : \t");
+        Annonce base= new Annonce("pasCher", 55, "chaussetteUsagees");
+        System.out.print(base + "\t");
         base.afficher();
 
-        System.out.print("annonce type Voiture ? : ");
-        AnnonceVoiture voiture= new AnnonceVoiture("voiture-1", "essence");
-        System.out.println(voiture);
+        System.out.print("annonce type Voiture : \t");
+        AnnonceVoiture voiture= new AnnonceVoiture("fiote500", "essence", 3500, "en l'état");
+        System.out.print(voiture + "\t");
         voiture.afficher();
 
-        System.out.print("annonce type Maison ? : ");
-        AnnonceMaison maison= new AnnonceMaison("maison-1", "100m2");
-        System.out.println(maison);
+        System.out.print("annonce type Maison : \t");
+        AnnonceMaison maison= new AnnonceMaison("chaumiere", "100m2", 55000, "a renover");
+        System.out.print(maison + "\t");
         maison.afficher();
     }
 }
