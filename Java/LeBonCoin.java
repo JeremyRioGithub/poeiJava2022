@@ -13,42 +13,35 @@ class LeBonCoin {
 
         // Sans la saisie :
         System.out.print("annonce type Voiture : \t");
-        AnnonceVoiture voiture= new AnnonceVoiture("fiote500", "essence", "3500", "en l'état");
+        AnnonceVoiture voiture= new AnnonceVoiture("fiote500", "3500", "en l'état", "essence");
         System.out.print(voiture + "\t");
         voiture.afficher();
 
         // Sans la saisie :
         System.out.print("annonce type Maison : \t");
-        AnnonceMaison maison= new AnnonceMaison("chaumiere", "100m2", "55000", "a renover");
+        AnnonceMaison maison= new AnnonceMaison("chaumiere", "55000", "a renover", "100m2");
         System.out.print(maison + "\t");
         maison.afficher();
 
-        /*
-        // Utilisation du calcul sur le prix de voiture en tant qu'entier:
-        String totalPrice="";
-        Integer calculs=Integer.parseInt(voiture.prix) * 2;
-        totalPrice = Integer.toString(calculs);
-        System.out.println(String.format("(voiture.prix)*2=%s", totalPrice));
-
-        // Utilisation du calcul sur le prix de voiture en tant que Double :
-        String totalPrice2="";
-        Double calculs2=(Float.parseFloat(voiture.prix+".0") * 2.1);
-        totalPrice2 = Double.toString(calculs2);
-        System.out.println(String.format("(voiture.prix)*2=%s", totalPrice2));
-        */
-        
         System.out.println("nouvelle Annonce: \t");
         Annonce a=new Annonce();
+        Annonce b=new Annonce();
         String annonce=sc1.nextLine();
         if (annonce.equals("voiture")){
             a=new AnnonceVoiture();
+            b=new AnnonceVoiture();
         }
         else if (annonce.equals("maison")){
             a=new AnnonceMaison();
+            b=new AnnonceMaison();
         }
         a.saisie(sc1);
         System.out.print(a + "\t");
         a.afficher();
+        a.save();
+
+        b.load(2);
+        System.out.println(b);
 
         sc1.close();
     }
