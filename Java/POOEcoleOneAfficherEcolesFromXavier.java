@@ -282,12 +282,12 @@ class POOEcoleOne {
         System.out.println(  "==================================");
 
 
-        Individus inconnu = jaures.chercherIndividus("totox");
+        //Individus inconnu = jaures.chercherIndividus("totox");
 
-        if ( inconnu != null && inconnu.getClass().getSimpleName().equals("Eleve")) {
-            Eleve monEleve = (Eleve) inconnu;
+        //if ( inconnu != null && inconnu.getClass().getSimpleName().equals("Eleve")) {
+          //  Eleve monEleve = (Eleve) inconnu;
             //monEleve.note += 10;
-        }
+        //}
 
         ArrayList<Eleve> lesEleves = jaures.listerEleve();
         for (Eleve eleve : lesEleves) {
