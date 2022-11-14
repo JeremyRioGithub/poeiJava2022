@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Annonce {
     protected String titre="No title";
-    protected String prix="";
+    public String prix="";
     protected String descriptif="No description";
     public Annonce(){}
     public Annonce(String titre, String prix, String descriptif) {

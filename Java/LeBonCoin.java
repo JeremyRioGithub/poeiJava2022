@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import annonces.*;
+
 class LeBonCoin {
     static Scanner sc1 = new Scanner(System.in);
     public static void main(String[] args) {
@@ -19,6 +20,12 @@ class LeBonCoin {
         System.out.print(maison + "\t");
         maison.afficher();
 
+        String totalPrice="";
+        Integer calculs=Integer.parseInt(voiture.prix) * 2;
+        totalPrice = Integer.toString(calculs);
+        System.out.println(String.format("(voiture.prix)*2=%s", totalPrice));
+
+        /*
         System.out.println("nouvelle Annonce Base: \t");
         Annonce annonce1 = new Annonce();
         annonce1.saisie(sc1);
@@ -31,6 +38,7 @@ class LeBonCoin {
         annonce1.afficher();
         System.out.print(voiture1 + "\t");
         voiture1.afficher();
+        */
         
         sc1.close();
     }
