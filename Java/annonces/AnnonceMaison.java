@@ -1,8 +1,8 @@
 package annonces;
 
-public class ClassMaison extends ClassBase {
+public class AnnonceMaison extends Annonce {
     String surface="";
-    public ClassMaison(String name, String surface) {
+    public AnnonceMaison(String name, String surface) {
         super(name);
         this.surface=surface;
     }

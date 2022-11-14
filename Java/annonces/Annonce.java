@@ -1,8 +1,8 @@
 package annonces;
 
-public class ClassBase {
+public class Annonce {
     String name="";
-    public ClassBase(String name) {
+    public Annonce(String name) {
         this.name=name;
     }
     public String toString() {

@@ -1,8 +1,8 @@
 package annonces;
 
-public class ClassVoiture extends ClassBase {
+public class AnnonceVoiture extends Annonce {
     String fuel="";
-    public ClassVoiture(String name, String fuel) {
+    public AnnonceVoiture(String name, String fuel) {
         super(name);
         this.fuel=fuel;
     }
