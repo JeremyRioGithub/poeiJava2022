@@ -20,8 +20,12 @@ public class AnnonceMaison extends Annonce {
         System.out.println("surface : ");
         this.surface=sc1.nextLine();
     }
-    public void save(){
-        String requete = String.format("INSERT INTO annonce (titre, prix, descriptif, surface) VALUES (%s, %s, %s, %s)", this.titre, this.prix, this.descriptif, this.surface);
+    public String save(){
+        String requete = String.format("INSERT INTO annonce (titre, prix, description) VALUES ('%s', '%s', '%s');", this.titre, this.prix, this.descriptif);
+        return requete;
+    }
+    public void load(int id){
+        String requete = String.format("SELECT * FROM annonce WHERE id=%d;", id);
         System.out.println(requete);
     }
 }

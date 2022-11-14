@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.sql.*; 
 import annonces.*;
 
 class LeBonCoin {
@@ -36,12 +36,53 @@ class LeBonCoin {
             b=new AnnonceMaison();
         }
         a.saisie(sc1);
-        System.out.print(a + "\t");
-        a.afficher();
+        //System.out.println(a + "\t");
+        //a.afficher();
         a.save();
 
-        b.load(2);
-        System.out.println(b);
+/* 
+DROP DATABASE leboncoin;
+CREATE DATABASE leboncoin;
+USE leboncoin;
+CREATE TABLE annonce (
+	type VARCHAR(255),
+	titre VARCHAR(255),
+	prix VARCHAR(255),
+	description VARCHAR(255)
+); 
+*/
+        
+        b.load(1);
+        //System.out.println(b);
+
+
+        
+        try
+        {  
+            Connection con=DriverManager.getConnection( "jdbc:mysql://localhost:3306/leboncoin","root","Pa55w.rd");  
+            Statement stmt=con.createStatement();  
+
+            // Ajouter une ligne dans la table
+            //stmt.executeUpdate("INSERT INTO annonce (titre, prix, description) VALUES ('boy', '150.0', 'dd');");
+            stmt.executeUpdate(a.save());
+
+            // Lire la table
+            ResultSet rs=stmt.executeQuery("select * from annonce;");  
+            System.out.println("id \ttype \ttitre \tprix \tdescription");
+            while(rs.next())  
+                System.out.println(rs.getInt("id")+" \t"+
+                rs.getString("type")+" \t"+
+                rs.getString("titre")+" \t"+
+                rs.getString("prix")+" \t"+
+                rs.getString("description"));  
+            con.close(); 
+        }
+        catch(Exception e)
+        { 
+            System.out .println(e);
+        }  
+
+
 
         sc1.close();
     }

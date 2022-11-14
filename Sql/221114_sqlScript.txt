@@ -1,0 +1,15 @@
+DROP DATABASE leboncoin;
+CREATE DATABASE leboncoin;
+USE leboncoin;
+CREATE TABLE annonce (
+	id INT PRIMARY KEY auto_increment NOT NULL,
+	type VARCHAR(255),
+	titre VARCHAR(255),
+	prix VARCHAR(255),
+	description VARCHAR(255)
+);
+SHOW COLUMNS FROM annonce;
+SELECT * FROM annonce;
+
+#INSERT INTO annonce (titre, prix, description) VALUES ('toy', '660.0', 'desc');
+#SELECT titre, prix, description FROM annonce WHERE id=1;

@@ -20,8 +20,8 @@ public class AnnonceVoiture extends Annonce {
         System.out.println("fuel : ");
         this.fuel=sc1.nextLine();
     }
-    public void save(){
-        String requete = String.format("INSERT INTO annonce (titre, prix, descriptif, fuel) VALUES (%s, %s, %s, %s)", this.titre, this.prix, this.descriptif, this.fuel);
-        System.out.println(requete);
+    public String save(){
+        String requete = String.format("INSERT INTO annonce (titre, prix, description) VALUES ('%s', '%s', '%s');", this.titre, this.prix, this.descriptif);
+        return requete;
     }
 }
