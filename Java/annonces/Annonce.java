@@ -1,18 +1,29 @@
 package annonces;
 
+import java.util.Scanner;
+
 public class Annonce {
-    String titre="No title";
-    Integer prix=-1;
-    String descriptif="No description";
-    public Annonce(String titre, Integer prix, String descriptif) {
+    protected String titre="No title";
+    protected String prix="";
+    protected String descriptif="No description";
+    public Annonce(){}
+    public Annonce(String titre, String prix, String descriptif) {
         this.titre=String.format("<< %s >>", titre);
         this.prix=prix;
-        this.descriptif=String.format("[ %s ]", descriptif);;
+        this.descriptif=String.format("[ %s ]", descriptif);
     }
     public String toString() {
-        return String.format("%s (%d)", this.titre, this.prix);
+        return String.format("%s (%s)", this.titre, this.prix);
     }
     public void afficher(){
         System.out.println(String.format("%s", this.descriptif));
+    }
+    public void saisie(Scanner sc1){
+        System.out.println("titre : ");
+        this.titre=String.format("<< %s >>", sc1.nextLine());
+        System.out.println("prix : ");
+        this.prix=sc1.nextLine();
+        System.out.println("description : ");
+        this.descriptif=String.format("[ %s ]", sc1.nextLine());
     }
 }
