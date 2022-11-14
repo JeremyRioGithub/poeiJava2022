@@ -1,5 +1,4 @@
 package annonces;
-
 import java.util.Scanner;
 
 public class Annonce {
@@ -29,9 +28,14 @@ public class Annonce {
     public String save(){
         String requete = String.format("INSERT INTO annonce (titre, prix, description) VALUES ('%s', '%s', '%s');", this.titre, this.prix, this.descriptif);
         return requete;
+        //AppelSQL sq = new AppelSQL();
     }
-    public void load(int id){
+    public String load(int id){
         String requete = String.format("SELECT * FROM annonce WHERE id=%d;", id);
-        System.out.println(requete);
+        return requete;
+    }
+    public String load(){
+        String requete = String.format("SELECT * FROM annonce;");
+        return requete;
     }
 }

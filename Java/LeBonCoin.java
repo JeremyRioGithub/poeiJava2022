@@ -1,10 +1,11 @@
+import java.sql.SQLException;
 import java.util.Scanner;
-import java.sql.*; 
+//import java.sql.*; 
 import annonces.*;
 
 class LeBonCoin {
     static Scanner sc1 = new Scanner(System.in);
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // Sans la saisie :
         System.out.print("annonce de Base : \t");
         Annonce base1= new Annonce("pasCher", "55", "chaussetteUsagees");
@@ -35,12 +36,23 @@ class LeBonCoin {
             a=new AnnonceMaison();
             b=new AnnonceMaison();
         }
-        a.saisie(sc1);
-        //System.out.println(a + "\t");
-        //a.afficher();
-        a.save();
+        // decommenter pour faire une saisie
+        //a.saisie(sc1);
 
-/* 
+        AppelSQL sq1 = new AppelSQL();
+        // Montre uniquement la premiere ligne de la table
+        //sq1.read(b.load(1));
+
+        // Ajoute la ligne saisie
+        //sq1.write(a.save());4
+
+        // Montre le contenu de la table
+        sq1.read(b.load());
+
+        sc1.close();
+
+        
+/* // Table à créer en amont sur MySql
 DROP DATABASE leboncoin;
 CREATE DATABASE leboncoin;
 USE leboncoin;
@@ -51,39 +63,5 @@ CREATE TABLE annonce (
 	description VARCHAR(255)
 ); 
 */
-        
-        b.load(1);
-        //System.out.println(b);
-
-
-        
-        try
-        {  
-            Connection con=DriverManager.getConnection( "jdbc:mysql://localhost:3306/leboncoin","root","Pa55w.rd");  
-            Statement stmt=con.createStatement();  
-
-            // Ajouter une ligne dans la table
-            //stmt.executeUpdate("INSERT INTO annonce (titre, prix, description) VALUES ('boy', '150.0', 'dd');");
-            stmt.executeUpdate(a.save());
-
-            // Lire la table
-            ResultSet rs=stmt.executeQuery("select * from annonce;");  
-            System.out.println("id \ttype \ttitre \tprix \tdescription");
-            while(rs.next())  
-                System.out.println(rs.getInt("id")+" \t"+
-                rs.getString("type")+" \t"+
-                rs.getString("titre")+" \t"+
-                rs.getString("prix")+" \t"+
-                rs.getString("description"));  
-            con.close(); 
-        }
-        catch(Exception e)
-        { 
-            System.out .println(e);
-        }  
-
-
-
-        sc1.close();
     }
 }
