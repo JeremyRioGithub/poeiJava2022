@@ -36,17 +36,16 @@ class LeBonCoin {
             a=new AnnonceMaison();
             b=new AnnonceMaison();
         }
-        // decommenter pour faire une saisie
-        //a.saisie(sc1);
-
+        
         AppelSQL sq1 = new AppelSQL();
+        // decommenter pour faire une saisie et l'enregistrer
+        a.saisie(sc1);
+        sq1.write(a.save());
+
         // Montre uniquement la premiere ligne de la table
         //sq1.read(b.load(1));
 
-        // Ajoute la ligne saisie
-        //sq1.write(a.save());4
-
-        // Montre le contenu de la table
+        // Montre le contenu total de la table
         sq1.read(b.load());
 
         sc1.close();

@@ -35,7 +35,9 @@ public class AppelSQL {
                         rs.getString("type") + " \t" +
                         rs.getString("titre") + " \t" +
                         rs.getString("prix") + " \t" +
-                        rs.getString("description"));
+                        rs.getString("description") + " \t" +
+                        rs.getString("essence") + " \t" +
+                        rs.getString("surface"));
             con.close();
             return rs;
         } catch (Exception e) {

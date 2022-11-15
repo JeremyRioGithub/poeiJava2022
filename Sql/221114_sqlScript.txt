@@ -6,10 +6,14 @@ CREATE TABLE annonce (
 	type VARCHAR(255),
 	titre VARCHAR(255),
 	prix VARCHAR(255),
-	description VARCHAR(255)
+	description VARCHAR(255),
+	essence VARCHAR(255),
+	surface VARCHAR(255)
 );
 SHOW COLUMNS FROM annonce;
 SELECT * FROM annonce;
 
 #INSERT INTO annonce (titre, prix, description) VALUES ('toy', '660.0', 'desc');
 #SELECT titre, prix, description FROM annonce WHERE id=1;
+#ALTER TABLE annonce ADD essence VARCHAR(255);
+#ALTER TABLE annonce ADD surface VARCHAR(255);

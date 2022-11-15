@@ -21,11 +21,7 @@ public class AnnonceVoiture extends Annonce {
         this.fuel=sc1.nextLine();
     }
     public String save(){
-        String requete = String.format("INSERT INTO annonce (titre, prix, description) VALUES ('%s', '%s', '%s');", this.titre, this.prix, this.descriptif);
-        return requete;
-    }
-    public String load(int id){
-        String requete = String.format("SELECT * FROM annonce WHERE id=%d;", id);
+        String requete = String.format("INSERT INTO annonce (type, titre, prix, description, essence) VALUES ('%s', '%s', '%s', '%s', '%s');", "VOIT", this.titre, this.prix, this.descriptif, this.fuel);
         return requete;
     }
 }

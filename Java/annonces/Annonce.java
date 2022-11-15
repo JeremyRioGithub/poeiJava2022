@@ -26,7 +26,7 @@ public class Annonce {
         this.descriptif=sc1.nextLine();
     }
     public String save(){
-        String requete = String.format("INSERT INTO annonce (titre, prix, description) VALUES ('%s', '%s', '%s');", this.titre, this.prix, this.descriptif);
+        String requete = String.format("INSERT INTO annonce (type, titre, prix, description) VALUES ('%s', '%s', '%s', '%s');", "BASE", this.titre, this.prix, this.descriptif);
         return requete;
         //AppelSQL sq = new AppelSQL();
     }
