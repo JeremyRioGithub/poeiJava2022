@@ -3,14 +3,14 @@ abstract interface Figure{
     abstract public void move(int x, int y);
     abstract public Integer surface();
 }
-class Point {
+class PointTwo {
     Integer x, y;
-    public Point(Integer x, Integer y) {
+    public PointTwo(Integer x, Integer y) {
         this.x=x;
         this.y=y;
     }
     public void affiche() {
-        System.out.println(String.format("Point: x=%d,y=%d", this.x, this.y));
+        System.out.println(String.format("PointTwo: x=%d,y=%d", this.x, this.y));
     }
     public void move(int dx, int dy){
         this.x += dx;
@@ -20,10 +20,10 @@ class Point {
 }
 
 class Cercle implements Figure{
-    Point centre;
+    PointTwo centre;
     Integer rayon;
     public Cercle(Integer x, Integer y, Integer r){
-        this.centre=new Point(x,y);
+        this.centre=new PointTwo(x,y);
         this.rayon=r;
     }
     public void affiche(){
@@ -40,11 +40,11 @@ class Cercle implements Figure{
 }
 
 class Rectangle {
-    Point pointHautGauche;
-    Point pointBasDroite;
+    PointTwo pointHautGauche;
+    PointTwo pointBasDroite;
     public Rectangle(Integer x, Integer y, Integer lon, Integer lar){
-        this.pointHautGauche=new Point(x,y);
-        this.pointBasDroite=new Point(x+lon,y+lar);
+        this.pointHautGauche=new PointTwo(x,y);
+        this.pointBasDroite=new PointTwo(x+lon,y+lar);
 
     }
     public void affiche(){
@@ -76,7 +76,7 @@ class POOFigureTwo {
     public static void main(String[] args) {
         
         // faire un point:
-        Point p1 = new Point(5,6);
+        PointTwo p1 = new PointTwo(5,6);
         p1.affiche(); 
         
         // Faire un cercle:
