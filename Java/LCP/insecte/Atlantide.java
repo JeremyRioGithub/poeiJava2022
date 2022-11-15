@@ -1,6 +1,6 @@
-package habitat;
+package insecte;
 
-public class Atlantide extends Locus {
+public class Atlantide extends Insecte {
 
     public Atlantide(String nom) {
         super(nom);

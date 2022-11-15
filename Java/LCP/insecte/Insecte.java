@@ -1,6 +1,6 @@
 package insecte;
 
-import habitat.*;
+import habitat.Locus;
 
 public class Insecte {
     private  String nom;
@@ -13,6 +13,21 @@ public class Insecte {
     }
     
     public Boolean liveIn(Locus locus) {
-        return null ;
+        String testedInsect = this.getClass().getName();
+        String testedPlace = locus.getClass().getName();
+        System.out.println("Insecte: " + testedInsect + ", Place: " + testedPlace);
+        if (testedInsect.equals("insecte.Papillon") && testedPlace.equals("habitat.Plaine")){
+            return true;
+        }
+        else if (testedInsect.equals("insecte.Papillon") && testedPlace.equals("habitat.Alpage")){
+            return true;
+        }
+        else if (testedInsect.equals("insecte.Cigale") && testedPlace.equals("habitat.Plaine")){
+            return true;
+        }
+        else if (testedInsect.equals("insecte.Atlantide") && testedPlace.equals("habitat.Atlantide")){
+            return true;
+        }
+        return false;
     }
 }

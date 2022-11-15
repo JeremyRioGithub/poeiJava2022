@@ -1,15 +1,19 @@
 import habitat.*;
 import insecte.*;
 
-public class LCP{
+class LCP{
     public static void main(String[]args) {
-        Alpage al1 = new Alpage("blanche");
-        Plaine pl1 = new Plaine("provence");
-        Papillon pa1 = new Papillon("bombyx");
-        Cigale ci1 = new Cigale("midi");
-        al1.has(pa1);
-        pa1.liveIn(al1);
-        pl1.has(ci1);
-        ci1.liveIn(pl1);
+        Alpage alpage = new Alpage("blanche");
+        Plaine plaine = new Plaine("provence");
+        Papillon papillon = new Papillon("bombyx");
+        Cigale cigale = new Cigale("midi");
+        habitat.Atlantide atlantideHab = new habitat.Atlantide("atlantide");
+        insecte.Atlantide atlantideIns = new insecte.Atlantide("atlante");
+        alpage.has(papillon);
+        papillon.liveIn(alpage);
+        System.out.println(plaine.has(cigale));
+        System.out.println(atlantideHab.has(atlantideIns));
+        System.out.println(atlantideHab.has(papillon));
+        System.out.println(cigale.liveIn(plaine));
     }
 }

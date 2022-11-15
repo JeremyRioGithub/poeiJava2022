@@ -1,6 +1,5 @@
 package insecte;
 
-
 public class Cigale extends Insecte {
 
     public Cigale(String nom) {
