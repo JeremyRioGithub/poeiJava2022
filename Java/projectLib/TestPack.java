@@ -1,6 +1,4 @@
-package projectLib;
-
-import projectLib.myLib.*;
+import myLib.*;
 
 // Le Collectionneur de Papillon
 class  TestPack {

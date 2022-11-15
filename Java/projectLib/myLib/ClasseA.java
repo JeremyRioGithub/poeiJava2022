@@ -1,4 +1,4 @@
-package projectLib.myLib;
+package myLib;
 
 public class ClasseA {
 
