@@ -13,8 +13,10 @@ class Atester
         if (n.equals("")){
             return n;
         }
-        System.out.println(n.toUpperCase().charAt(0) +n.toLowerCase().substring(1));
-        return n.charAt(0)+n.substring(1);
+        String res = n.toUpperCase().charAt(0) +n.toLowerCase().substring(1);
+        // Debug:
+        //System.out.println(res);
+        return res;
     }
 
 
