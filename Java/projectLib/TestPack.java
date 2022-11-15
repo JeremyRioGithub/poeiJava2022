@@ -2,7 +2,7 @@ package projectLib;
 
 import projectLib.myLib.*;
 
-// Le Collectioneur de Papillon
+// Le Collectionneur de Papillon
 class  TestPack {
  // Jeremy, from Xavier
 
@@ -11,7 +11,7 @@ class  TestPack {
         ClasseA ka = new ClasseA();
 
         System.out.println(  ka  );
-        // je suis la classe A 
+        // doit afficher 'je suis la classe A' 
     }        
 }
 
