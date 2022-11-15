@@ -1,4 +1,4 @@
-// Bourget
+// Jeremy, from Bourget
 
 class Atester {
     static public Integer calcul1(int var) {
