@@ -1,4 +1,4 @@
-package insecte;
+package locus.insecte;
 
 public class Atlantide extends Insecte {
 

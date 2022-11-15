@@ -1,6 +1,6 @@
-package habitat;
+package locus.habitat;
 
-public class Marin extends Locus {
+public class Marin extends Habitat {
 
     public Marin(String nom) {
         super(nom);

@@ -1,6 +1,6 @@
-package habitat;
+package locus.habitat;
 
-public class Plaine extends Locus {
+public class Plaine extends Habitat {
 
     public Plaine(String nom) {
         super(nom);

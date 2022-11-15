@@ -1,20 +1,18 @@
-package habitat;
+package locus;
 
-import insecte.Insecte;
+import locus.habitat.Habitat;
+import locus.insecte.Insecte;
 
 public class Locus {
-    private  String nom;
-    public Locus(String nom){
-        this.nom=nom;
+    protected String nom;
+    
+    public Locus(String nom) {
+        this.nom = nom;
     }
 
-    public String toString() {
-        return String.format("lieu : %s (%s)", this.nom, this.getClass().getName());
-    }
-
-    public Boolean has(Insecte insecte) {
-        String testedPlace = this.getClass().getName();
-        String testedInsect = insecte.getClass().getName();
+    public Boolean linkedTo(Habitat habitat, Insecte insecte) {
+        String testedInsect = this.getClass().getName();
+        String testedPlace = habitat.getClass().getName();
         System.out.println("Insecte: " + testedInsect + ", Place: " + testedPlace);
         if (testedInsect.equals("insecte.Papillon") && testedPlace.equals("habitat.Plaine")){
             return true;
@@ -30,5 +28,4 @@ public class Locus {
         }
         return false;
     }
-    
 }

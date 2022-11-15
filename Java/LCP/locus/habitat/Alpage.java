@@ -1,7 +1,6 @@
-package habitat;
+package locus.habitat;
 
-
-public class Alpage extends Locus {
+public class Alpage extends Habitat {
 
     public Alpage(String nom) {
         super(nom);

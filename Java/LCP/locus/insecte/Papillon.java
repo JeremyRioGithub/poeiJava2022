@@ -1,5 +1,4 @@
-package insecte;
-
+package locus.insecte;
 
 public class Papillon extends Insecte {
 

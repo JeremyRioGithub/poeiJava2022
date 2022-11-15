@@ -1,6 +1,6 @@
-package habitat;
+package locus.habitat;
 
-public class Atlantide extends Locus {
+public class Atlantide extends Habitat {
 
     public Atlantide(String nom) {
         super(nom);
