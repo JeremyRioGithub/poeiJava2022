@@ -1,15 +1,15 @@
-import habitat;
-import insecte;
+import habitat.*;
+import insecte.*;
 
-class LCP{
+public class LCP{
     public static void main(String[]args) {
-        Montagne mo1 = new Montagne("blanche");
+        Alpage al1 = new Alpage("blanche");
         Plaine pl1 = new Plaine("provence");
         Papillon pa1 = new Papillon("bombyx");
         Cigale ci1 = new Cigale("midi");
-        mo1.has(pa1);
-        pa1.liveIn(mo1);
+        al1.has(pa1);
+        pa1.liveIn(al1);
         pl1.has(ci1);
-        ci1.liveIne(pl1);
+        ci1.liveIn(pl1);
     }
 }
