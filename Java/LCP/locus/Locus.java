@@ -11,19 +11,19 @@ public class Locus {
     }
 
     public Boolean linkedTo(Habitat habitat, Insecte insecte) {
-        String testedInsect = this.getClass().getName();
+        String testedInsect = insecte.getClass().getName();
         String testedPlace = habitat.getClass().getName();
         System.out.println("Insecte: " + testedInsect + ", Place: " + testedPlace);
-        if (testedInsect.equals("insecte.Papillon") && testedPlace.equals("habitat.Plaine")){
+        if (testedInsect.equals("locus.insecte.Papillon") && testedPlace.equals("locus.habitat.Plaine")){
             return true;
         }
-        else if (testedInsect.equals("insecte.Papillon") && testedPlace.equals("habitat.Alpage")){
+        else if (testedInsect.equals("locus.insecte.Papillon") && testedPlace.equals("locus.habitat.Alpage")){
             return true;
         }
-        else if (testedInsect.equals("insecte.Cigale") && testedPlace.equals("habitat.Plaine")){
+        else if (testedInsect.equals("locus.insecte.Cigale") && testedPlace.equals("locus.habitat.Plaine")){
             return true;
         }
-        else if (testedInsect.equals("insecte.Atlantide") && testedPlace.equals("habitat.Atlantide")){
+        else if (testedInsect.equals("locus.insecte.Atlantide") && testedPlace.equals("locus.habitat.Atlantide")){
             return true;
         }
         return false;
