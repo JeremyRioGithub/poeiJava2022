@@ -19,15 +19,15 @@ class PointTwo {
 
 }
 
-class Cercle implements Figure{
+class CercleTwo implements Figure{
     PointTwo centre;
     Integer rayon;
-    public Cercle(Integer x, Integer y, Integer r){
+    public CercleTwo(Integer x, Integer y, Integer r){
         this.centre=new PointTwo(x,y);
         this.rayon=r;
     }
     public void affiche(){
-        System.out.println(String.format("Cercle: x=%d,y=%d,rayon=%d", this.centre.x, this.centre.y,this.rayon));
+        System.out.println(String.format("CercleTwo: x=%d,y=%d,rayon=%d", this.centre.x, this.centre.y,this.rayon));
     }
     public Integer surface(){
         int i = (int)(this.rayon * this.rayon * 3.14);
@@ -80,7 +80,7 @@ class POOFigureTwo {
         p1.affiche(); 
         
         // Faire un cercle:
-        Cercle c1 = new Cercle(11,61,45);
+        CercleTwo c1 = new CercleTwo(11,61,45);
         c1.affiche();
         
         // Faire un carre:
