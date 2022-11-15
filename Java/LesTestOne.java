@@ -5,28 +5,31 @@ class Atester {
         return 5 * var;
     }
     
-    static public String presentation() {
-        return null;
-    }
-    
     static public String presentation(String n) {
-        if (n.equals("") || n.equals(null)) {
+        if (n==null){
             return n;
         }
-        String res = n.toUpperCase().charAt(0) + n.toLowerCase().substring(1);
-        // Debug:
-        // System.out.println(res);
-        return res;
+        else if (n.length()==0) {
+            return n;
+        }
+        else{
+            String res = n.toUpperCase().charAt(0) + n.toLowerCase().substring(1);
+            // Debug:
+            // System.out.println(res);
+            return res;
+        }
     }
 
-    static public Boolean bisextile(int annee) {
-        if (annee%4==0){
+    static public Boolean bisextile(Integer annee) {
+        if (annee==null){
+            return null;
+        }
+        else if (annee%4==0){
             return true;
         }
-        else if (annee%4!=0){
+        else {
             return false;
         }
-        return null;
     }
 
 }
@@ -62,7 +65,14 @@ public class LesTestOne {
         else
             System.out.println("KO");
 
-        if (Atester.presentation() == null)
+        String s1=null;
+        if (Atester.presentation(s1)==null)
+            System.out.println("OK");
+        else
+            System.out.println("KO");
+
+        Integer i1=null;
+        if (Atester.bisextile(i1) == null)
             System.out.println("OK");
         else
             System.out.println("KO");
