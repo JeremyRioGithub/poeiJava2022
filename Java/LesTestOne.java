@@ -19,13 +19,8 @@ class Atester {
     }
 
     static public Boolean bisextile(Integer annee) {
-        if (annee == null) {
-            return null;
-        } else if (annee % 4 == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        //if (annee == null) return null; else return ((annee % 4 == 0) && (annee % 100 != 0)) || (annee % 400 == 0);
+        return (annee == null ? null : ((annee % 4 == 0) && (annee % 100 != 0)) || (annee % 400 == 0));
     }
 
     public static void testString(String s1, String s2) {
@@ -43,6 +38,21 @@ class Atester {
             System.out.println(String.format("%s: %b == %b", b1 == b2 ? "OK": "KO", b1, b2));
         else 
             System.out.println("OK: null == null");
+    }
+
+    public static Double tarif(int i) {
+        if (i<5)
+            return 0.0;
+        else if (i<12)
+            return 4.0;
+        else if (i>=60)
+            return 4.5;
+        else 
+            return 5.5;
+    }
+
+    public static void testDoubleEq(Double d1, double d2) {
+        System.out.println(String.format("%s: %,.2f == %,.2f", d1.equals(d2) ? "OK": "KO", d1, d2));
     }
 
 }
@@ -73,5 +83,15 @@ public class LesTestOne {
         Atester.testBoolean(Atester.bisextile(2023), false);
         Atester.testBoolean(Atester.bisextile((Integer)null), null);
 
+
+        /*
+         * inf à 5      -> 0.0
+         * inf à 12     -> 4.0
+         * inf à 60     -> 5.5
+         * >=  à 60     -> 4.5
+         */
+        Atester.testDoubleEq(Atester.tarif(41),5.5);
+        Atester.testDoubleEq(Atester.tarif(6),4.0);
+        Atester.testDoubleEq(Atester.tarif(63),4.5);
     }
 }
