@@ -30,7 +30,7 @@ class Cercle implements Figure{
         System.out.println(String.format("Cercle: x=%d,y=%d,rayon=%d", this.centre.x, this.centre.y,this.rayon));
     }
     public Integer surface(){
-        Integer i = (int)(this.rayon * this.rayon * 3.14);
+        int i = (int)(this.rayon * this.rayon * 3.14);
         System.out.println(i);
         return i;
     }
@@ -39,16 +39,16 @@ class Cercle implements Figure{
     }
 }
 
-class Rectangle {
+class RectangleOne {
     PointTwo pointHautGauche;
     PointTwo pointBasDroite;
-    public Rectangle(Integer x, Integer y, Integer lon, Integer lar){
+    public RectangleOne(Integer x, Integer y, Integer lon, Integer lar){
         this.pointHautGauche=new PointTwo(x,y);
         this.pointBasDroite=new PointTwo(x+lon,y+lar);
 
     }
     public void affiche(){
-        System.out.println(String.format("Rectangle: x=%d,y=%d,lon=%d,lar=%d", this.pointHautGauche.x, this.pointHautGauche.y,Math.abs(this.pointBasDroite.x-this.pointHautGauche.x),Math.abs(this.pointBasDroite.x-this.pointHautGauche.x)));
+        System.out.println(String.format("RectangleOne: x=%d,y=%d,lon=%d,lar=%d", this.pointHautGauche.x, this.pointHautGauche.y,Math.abs(this.pointBasDroite.x-this.pointHautGauche.x),Math.abs(this.pointBasDroite.x-this.pointHautGauche.x)));
     }
     public Integer surface(){
         return Math.abs(this.pointBasDroite.x-this.pointHautGauche.x) * Math.abs(this.pointBasDroite.x-this.pointHautGauche.x);
@@ -59,14 +59,14 @@ class Rectangle {
     }
 }
 
-class Carre extends Rectangle{
+class CarreOne extends RectangleOne{
     Integer cote;
-    public Carre(Integer x, Integer y, Integer c){
+    public CarreOne(Integer x, Integer y, Integer c){
         super(x,y,c,c);
         this.cote=c;
     }
     public void affiche(){
-        System.out.println(String.format("Carre: x=%d,y=%d,cote=%d", this.pointHautGauche.x, this.pointHautGauche.y,this.cote));
+        System.out.println(String.format("CarreOne: x=%d,y=%d,cote=%d", this.pointHautGauche.x, this.pointHautGauche.y,this.cote));
     }
 }
 
@@ -84,17 +84,17 @@ class POOFigureTwo {
         c1.affiche();
         
         // Faire un carre:
-        Carre k1 = new Carre(18,-3,15);
+        CarreOne k1 = new CarreOne(18,-3,15);
         k1.affiche(); 
 
         // Faire un carre:
-        Rectangle r1 = new Rectangle(3,19,99,18);
+        RectangleOne r1 = new RectangleOne(3,19,99,18);
         r1.affiche();
 
         //afficher surface du rectangle
         System.out.println(String.format("surface rectangle %d", r1.surface()));
         //afficher surface du cercle
-        System.out.println(String.format("surface cercle %d", c1.surface()));
+        //System.out.println(String.format("surface cercle %d", c1.surface())); // problem with converting double to integer.
         //afficher surface du rectangle
         System.out.println(String.format("surface carre %d", k1.surface()));
 

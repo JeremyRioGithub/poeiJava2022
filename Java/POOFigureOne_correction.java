@@ -15,11 +15,11 @@ class PointCorrEx
     }
 }
 
-class Cercle extends PointCorrEx
+class CercleOne extends PointCorrEx
 {
     Integer rayon;
 
-    public Cercle( Integer x, Integer y, Integer r )
+    public CercleOne( Integer x, Integer y, Integer r )
     {
         super(x, y);
         this.rayon = r;
@@ -27,7 +27,7 @@ class Cercle extends PointCorrEx
 
     public void affiche()
     {
-        System.out.println( String.format( "Cercle : (%d, %d) rayon=%d", this.x, this.y, this.rayon ) );
+        System.out.println( String.format( "CercleOne : (%d, %d) rayon=%d", this.x, this.y, this.rayon ) );
     }
 }
 
@@ -44,7 +44,7 @@ class  POOFigureOne_correction {
         p1.affiche();
         // (5, 6)
 
-        Cercle c1 = new Cercle( 11, 61, 45 );
+        CercleOne c1 = new CercleOne( 11, 61, 45 );
         c1.affiche();
         // (5, 6)
 
