@@ -1,120 +1,81 @@
 import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 // Jeremy, from Xavier
 import java.util.HashMap;
 
-class MyFileReader  extends FileReader
-{
+class MyFileReader extends FileReader {
     static Integer EOF = -1;
     static Integer LF = 10;
     static int CR = 13;
-    int caractereLuEnTrop; 
 
-    public MyFileReader(String fileName ) throws FileNotFoundException
-    {
-        super( fileName );
+    public MyFileReader(String fileName) throws FileNotFoundException {
+        super(fileName);
     }
 
-    public Boolean hasNext() throws IOException
-    {
-
-        if ( EOF == ( this.caractereLuEnTrop=this.read()) )
-            return false;
-        return true;
-    }
-
-    public String readLine() throws Exception
-    {
+    public String readLine() throws Exception {
         int caracter;
-
         String res = new String();
-        res += (char)this.caractereLuEnTrop;
-
-        while ( EOF != (caracter = this.read()) )
-        {
-            if ( caracter == LF )
+        while (EOF != (caracter = this.read())) {
+            if ((caracter == LF))
                 return res;
             else
-                res += (char)caracter; 
+                res += (char) caracter;
         }
         throw new EOFException();
-    } 
-}
-
-class MaLigne {
-    private String ligne;
-    private String premierMot;
-
-    public MaLigne(String ligne){
-        this.ligne=ligne;
-    }
-    public String[] afficherListeMots(){
-        String str[] = this.ligne.split("[\n.\t. (){},\\.]+");   
-        //ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(str));  
-        return str;
-    }
-    public String compterMotsParLigne(){
-        String[] listeMots = this.ligne.split("[\n.\t. (){},\\.]+");
-        String nbrMots = listeMots[listeMots.length -1];
-        return nbrMots;
-    }
-    public String toString() {
-        premierMot = this.ligne.split("[\n.\t. (){},\\.]+")[0];
-        return String.format("premier mot de la ligne : %s", this.premierMot);
     }
 }
 
-public class  FichierFourPOOXavier {
+public class FichierFourPOOXavier {
 
-    public static void ReadFileByLine() throws Exception{
+    public static void ReadFileByLine() throws Exception {
 
         String file = "Figures.java";
         MyFileReader filereader = new MyFileReader(file);
+        HashMap<String, Integer> occurence = new HashMap<String, Integer>();
         try {
-                String ligne;
-                HashMap<String, Integer> occurence = new HashMap<String, Integer>();
-                //while ( true )
-                int i = 0;
-                while (i<3)
-                {
-                    i++;
-                    ligne = filereader.readLine();
-                    //MaLigne maLigne = new MaLigne(ligne);
-                    //String[] listeMots =  maLigne.afficherListeMots();
-                    String[] listeMots =  ligne.split("[\n.\t. ]+");
-                    for (String chaqueMot : listeMots){
-                        if (!chaqueMot.equals(" ") && chaqueMot.length()>0 && !chaqueMot.equals("Ã") && !chaqueMot.equals("//") && !chaqueMot.equals("\n") && !chaqueMot.equals("\t")){
-                            //System.out.println(String.format("%s ", chaqueMot));
-                            if (! occurence.containsKey(chaqueMot)){
-                                occurence.put(chaqueMot, 1);
-                            }
-                            else {
-                                occurence.put(chaqueMot, occurence.get(chaqueMot)+1);
-                            }
+            String ligne;
+            while (-1!=filereader.read())
+            {
+                ligne = filereader.readLine();
+                String[] listeMots = ligne.split("[\n\t .\\s\"\\[\\](){};\\/\\,<>=+Ã\\-%']+");
+                for (String chaqueMot : listeMots) {
+                    if (chaqueMot.length() > 1 && !chaqueMot.equals(" ")) {
+                        // affichage de chaque mot de >1 lettre du fichier lu:
+                        //System.out.println(String.format("%s ", chaqueMot));
+                        if (!occurence.containsKey(chaqueMot)) {
+                            occurence.put(chaqueMot, 1);
+                        } else {
+                            occurence.put(chaqueMot, occurence.get(chaqueMot) + 1);
                         }
                     }
-                    for (String chaqueMot : occurence.keySet()){
-                        System.out.println(chaqueMot +"\t"+ occurence.get(chaqueMot));
-                    }
                 }
+                // le if suivant est necessaire pour afficher le résultat, sans quoi c'est l'exception EOFException qui prend le relai, et les occurences n'apparaissent pas.
+                if (filereader.read()==-1){
+                    System.out.println("fin de FICHIER");
+                }
+            }
+            for (String chaqueMots : occurence.keySet()) {
+                // affichage des occurrences
+                System.out.println(String.format("%3d %3d %10s ", occurence.get(chaqueMots), chaqueMots.length() == 1 ? (int) chaqueMots.charAt(0) : 'X', chaqueMots));
+            }
         }
-        
-        catch (EOFException e) 
-        {System.out.println( "fin du fichier" );}
 
-        catch (Exception e) 
-        {System.out.println( "une erreur s'est produite" );}
+        catch (EOFException e) {
+            System.out.println("fin du fichier");
+        }
 
-        finally 
-        {
-            System.out.println( "finally" );
+        catch (Exception e) {
+            System.out.println("une erreur s'est produite");
+        }
+
+        finally {
+            System.out.println("finally");
             filereader.close();
         }
     }
-    public static void main(String[] args) throws Exception
-    {
-        ReadFileByLine();      
-    }    
+
+    public static void main(String[] args) throws Exception {
+        ReadFileByLine();
+    }
 }
