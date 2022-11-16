@@ -1,31 +1,9 @@
-import java.util.*;
-import java.util.ArrayList.*;
 import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 // Jeremy, from Xavier
-
-/* 
-    Fichier texte (caractère + les controles)
-        lire jusqua la fin quand on rencontre le caractere EOF
-
-    Fichier binaire 
-        connaitre la taille du fichier et puis le lire jusqu'à la fin 
-
-*/
-
-
-class MyException extends Exception
-{
-
-    public MyException()
-    {
-        super();
-    }
-
-}
-
+import java.util.HashMap;
 
 class MyFileReader  extends FileReader
 {
@@ -61,46 +39,82 @@ class MyFileReader  extends FileReader
             else
                 res += (char)caracter; 
         }
-        throw new MyException();
+        throw new EOFException();
     } 
 }
 
-public class  FichierFourPOO {
-    // Xavier
+class MaLigne {
+    private String ligne;
+    private String premierMot;
 
-    public static void main(String[] args) throws Exception
-    {          
+    public MaLigne(String ligne){
+        this.ligne=ligne;
+    }
+    public String[] afficherListeMots(){
+        String str[] = this.ligne.split("[\n.\t. (){},\\.]+");   
+        //ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(str));  
+        return str;
+    }
+    public String compterMotsParLigne(){
+        String[] listeMots = this.ligne.split("[\n.\t. (){},\\.]+");
+        String nbrMots = listeMots[listeMots.length -1];
+        return nbrMots;
+    }
+    public String toString() {
+        premierMot = this.ligne.split("[\n.\t. (){},\\.]+")[0];
+        return String.format("premier mot de la ligne : %s", this.premierMot);
+    }
+}
+
+public class  FichierFourPOOXavier {
+
+    public static void ReadFileByLine() throws Exception{
 
         String file = "Figures.java";
-        //String file = args[0];
         MyFileReader filereader = new MyFileReader(file);
         try {
-               
-                int nbrLin = 1;
                 String ligne;
-
-                while ( true )
+                HashMap<String, Integer> occurence = new HashMap<String, Integer>();
+                //while ( true )
+                int i = 0;
+                while (i<3)
                 {
+                    i++;
                     ligne = filereader.readLine();
-                    System.out.println( String.format("%4d : %s", nbrLin++, ligne ) );
+                    //MaLigne maLigne = new MaLigne(ligne);
+                    //String[] listeMots =  maLigne.afficherListeMots();
+                    String[] listeMots =  ligne.split("[\n.\t. ]+");
+                    for (String chaqueMot : listeMots){
+                        if (!chaqueMot.equals(" ") && chaqueMot.length()>0 && !chaqueMot.equals("Ã") && !chaqueMot.equals("//") && !chaqueMot.equals("\n") && !chaqueMot.equals("\t")){
+                            //System.out.println(String.format("%s ", chaqueMot));
+                            if (! occurence.containsKey(chaqueMot)){
+                                occurence.put(chaqueMot, 1);
+                            }
+                            else {
+                                occurence.put(chaqueMot, occurence.get(chaqueMot)+1);
+                            }
+                        }
+                    }
+                    for (String chaqueMot : occurence.keySet()){
+                        System.out.println(chaqueMot +"\t"+ occurence.get(chaqueMot));
+                    }
                 }
         }
         
-        catch (MyException e) 
-        {
-            System.out.println( "fin du fichier" );
-        }
+        catch (EOFException e) 
+        {System.out.println( "fin du fichier" );}
 
         catch (Exception e) 
-        {
-            System.out.println( "une erreur s'est produite" );
-            //e.printStackTrace();
-        }
+        {System.out.println( "une erreur s'est produite" );}
 
         finally 
         {
             System.out.println( "finally" );
             filereader.close();
         }
+    }
+    public static void main(String[] args) throws Exception
+    {
+        ReadFileByLine();      
     }    
 }
