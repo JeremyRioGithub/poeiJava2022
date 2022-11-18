@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!- a titre indicatif, balise non obligatoire permettant d'indiquer la version html->
+    <html>
+
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="formatting.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <p>1er</p>
+            <p>2e</p>
+            <p>3e</p>
+            <p>4e</p>
+        </div>
+
+
+        <div class="smalldiv">
+        </div>
+        <div class="bigdiv">
+        </div>
+        <section>
+            <div class="banane">
+                <div>
+                    <title>Bienvenue sur ma page HTML </title>
+                    <h1>Hello World !</h1>
+                    <a href="https://en.wikipedia.org/wiki/HTML">
+                        <img src="image.jpg" alt="la photo n'est pas disponible" />
+                        lien wikipedia
+                    </a>
+                </div>
+                <div>
+                    <ul>
+                        <form method="GET" action>
+                            <li><input type="text" name="text" placeholder="text" />text</li>
+                            <li><input type="email" name="email" placeholder="email" />email</li>
+                            <li><input type="number" name="number" placeholder="number" />number</li>
+                            <li><input type="date" name="date" />date</li>
+                            <li><input type="password" name="password" placeholder="password" />password</li>
+                            <li><input type="checkbox" name="checkbox" [checked] />checkbox1<input type="checkbox"
+                                    name="checkbox" [checked] />checkbox2</li>
+                            <li><input type="radio" name="radio" [checked] />radio1<input type="radio" name="radio"
+                                    [checked] />radio2</li>
+                            <li><input type="submit" value="submit" />submit</li>
+                            <li><input type="button" value="button" />button</li>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <hr style="height:2px">
+        <section>
+            <div class="banane">
+                <ol>
+                    <li>
+                        <p>
+                        <h2>Introduction</h2>
+                        <banane>Je m'appelle <mark>Jeremy</mark> </banane><br>
+                        <banane id="banane">(cette ligne est écrite avec l'id #banane, qui prend le dessus sur la balise
+                            banane)
+                        </banane><br>
+                        <carotte><i>J'aime</i> le <b>HTML</b> :D</carotte>
+                        </p>
+                    </li>
+                    <hr style="height:fit-content">
+                    <li>
+                        <p>
+                        <h2>Materiel et méthodes</h2>
+                        <banane>Sur chaque <mark>paragraphe</mark></banane><br>
+                        <banane class="banane">(avec la classe .banane, qui prend le dessus sur la balise)</banane><br>
+                        <carotte><i>Je dis</i> ce que je <b>VEUX</b> :D</carotte>
+                        </p>
+                    </li>
+                    <hr style="height:fit-content">
+                    <li>
+                        <p>
+                        <h2>Résultats</h2>
+                        <banane>Le style est géré par le <mark>CSS</mark></banane><br>
+                        <banane id="banane" class="banane">(avec l'id #banane et la classe .banane, l'id prend le dessus
+                            sur
+                            les
+                            attributs deja présents, mais affiche tout de meme les attributs de la classe non déclarés
+                            par
+                            l'id)
+                        </banane><br>
+                        <carotte>Ici c'est la balise <i>"carotte"</i> au dessus c'est la balise <b>"banane"</b> :D
+                        </carotte>
+                        </p>
+                    </li>
+                    <hr style="height:fit-content">
+                    <li>
+                        <p>
+                        <h2>Discussion</h2>
+                        <banane>Le <mark>style</mark> intégré dans html prend le dessus sur le CSS</banane><br>
+                        <banane>(l'ordre de priorité est donc: id, classe, balise. Toutefois, l'id n'est utilisé qu'une
+                            fois.)
+                        </banane><br>
+                        <carotte><i>Enjoliver d'accord</i> mais pas comme <b>CA!</b> :D</carotte>
+                        </p>
+                    </li>
+                    <hr style="height:fit-content">
+                    <li>
+                        <p>
+                        <h2>Conclusion</h2>
+                        <banane>En <mark>conclusion</mark> ?</banane><br>
+                        <banane>(attention à ce qui est déclaré dans chaque style. Préférer mettre le plus de style dans
+                            les
+                            balise de basse priorité, et moins dans celle ayant la plus haute priorité)</banane><br>
+                        <carotte><i>Il manque du travail</i> pour rendre ca <b>Esthetique</b> :D</carotte>
+                        </p>
+                    </li>
+                </ol>
+            </div>
+            <hr style="height:10px">
+        </section>
+
+    </body>
+
+    </html>

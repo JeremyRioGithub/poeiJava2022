@@ -1,0 +1,57 @@
+banane {
+    font-size: 20px;
+    font-family: Helvetica;
+    background-color:lightgrey;
+    color:blue;
+    margin: 20px;
+    padding: 5px;
+}
+.banane {
+    font-size: 15px;
+    font-family: Arial;
+    color:green;
+    width:"100%";
+    border: solid;
+    border-width: 2px;
+    height:500px;
+    overflow:scroll;
+}
+#banane {
+    background-color:beige;
+    font-family: Arial;
+    color:red;
+}
+mark {
+    font-family: Helvetica;
+    color:forestgreen
+}
+carotte {
+    font-family: Arial;
+    color:red;
+}
+li:first-child {
+    font-size: 20px;
+    color:darkblue;
+}
+.smalldiv {
+    /*visibility:hidden;*/
+    /*display: block;*/
+    z-index: 0;
+    background: blue;
+    width:100px;
+    height:100px;
+    overflow:scroll;
+}
+.bigdiv {
+    background: red;
+    width:500px;
+    height:500px;
+    z-index: 1;
+}
+.container {
+    display: flex;
+    flex-direction: column; /*afficher les elements de container en ligne ou en colonne*/
+    align-items:flex-end; /*centré, gauche ou droite*/
+    width:500px;
+    height:100px;
+}
