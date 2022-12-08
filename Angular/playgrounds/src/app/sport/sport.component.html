@@ -1,0 +1,18 @@
+<h1>SPORTS:</h1>
+
+<ul>
+  SPORT 1:
+  <ng-container *ngIf="sports1.length>0">
+    <li *ngFor="let sport of sports1">{{sport}}</li>
+  </ng-container>
+  <br>
+  SPORT 2:
+  <ng-container *ngIf="sports2.length>0">
+    <li *ngFor="let sport2 of sports2">{{sport2.id}} -- {{sport2.name}}</li>
+  </ng-container>
+  <br>
+  SPORT 3:
+  <ng-container *ngIf="sports2.length>0">
+    <li *ngFor="let sport3 of sports3">{{sport3}}</li>
+  </ng-container>
+</ul>

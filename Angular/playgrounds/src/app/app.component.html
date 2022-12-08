@@ -1,2 +1,7 @@
-<h1>{{favoritePet}}</h1>
-<button (click)="onChangeFavPet()">Change Fav Pet</button>
+<!-- <h1>{{favoritePet}}</h1>
+<button (click)="onChangeFavPet()">Change Fav Pet</button> -->
+<h1>App</h1>
+<app-sport [sports3]="appSports3"></app-sport>
+<div>Chien selectionné, affiché par le parent: {{chienSelectionne}}</div>
+<!-- BUG -->
+<app-chiens [chiens]="appChiens" (selectChien)="appSelectChien($event)"></app-chiens>

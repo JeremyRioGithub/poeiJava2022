@@ -1,0 +1,7 @@
+
+<h1 *ngIf="chiens.length>0">CHIENS CELEBRES: affiché par l'enfant {{ selectedChien }} </h1>
+<ol>
+    <li *ngFor="let chien of chiens" (click)="onSelectChiens(chien)">
+      {{chien}}
+    </li>
+</ol>
