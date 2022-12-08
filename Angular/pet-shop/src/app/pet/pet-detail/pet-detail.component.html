@@ -1,1 +1,21 @@
-<p>pet-detail works!</p>
+<div class="pet-detail">
+  <!-- ci-dessous, 2 facons d'ecrire pet name : -->
+  <!-- <div *ngIf="detailPet">{{detailPet.name}}</div> -->
+  <div *ngIf="detailPet; else noPetSelected" class="pet-info">
+    <div>
+      <div class="title">
+        <h1>{{detailPet.name}}</h1>
+      </div>
+      <h2>{{detailPet.species}}</h2>
+    </div>
+    <p class="price">{{detailPet.price}}</p>
+    <!-- ci-dessous, 2 facons d'ecrire Vendu/Disponible : -->
+    <!-- <p *ngIf="detailPet.isAvailable">Disponible</p> <p *ngIf="!detailPet.isAvailable">Vendu</p> -->
+    <p  [class]="detailPet.isAvailable ? 'available' : 'sold'">{{detailPet.isAvailable ? 'Disponible' : 'Vendu'}}</p>
+  </div>
+</div>
+
+<ng-template #noPetSelected>
+  <div class="no-pet-selected">Merci de selectionner un animal</div>
+</ng-template>
+

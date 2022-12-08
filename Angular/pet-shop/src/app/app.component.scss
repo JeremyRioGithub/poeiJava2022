@@ -1,0 +1,13 @@
+.app {
+  //border: 1px solid red;
+  height: 100%;
+  .navbar {
+    //border: 1px solid blue;
+    height: 60px;
+  }
+  .content {
+    //border: 1px solid red;
+    height: calc(100% - 60px - 40px);
+    margin: 20px;
+  }
+}

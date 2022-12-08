@@ -1,4 +1,4 @@
-<h1>List:</h1>
-<app-pet-list></app-pet-list>
-<h1>Detail:</h1>
-<app-pet-detail></app-pet-detail>
+<div class="pet">
+  <app-pet-list [petList]="pets" (selectPet)="onSelectPet($event)"></app-pet-list>
+  <app-pet-detail [detailPet]="selectedPet"></app-pet-detail>
+</div>

@@ -1,0 +1,16 @@
+.pet-detail{
+  height:100%;
+  text-align: center;
+  border: 1px solid grey;
+  border-radius: 50px;
+  .pet-info{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .title {text-transform: uppercase;}
+    .price { font-size: 200%; }
+    .available { color: green; background: yellow}
+    .sold { color: red; background: black }
+  }
+}

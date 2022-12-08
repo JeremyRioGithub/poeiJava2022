@@ -1,1 +1,9 @@
-<p>pet-list works!</p>
+<div class="pet-list">
+  <app-pet-list-item
+  *ngFor="let pet of petList"
+  [petChild]="pet"
+  (click)="onClickPet(pet.id)">
+  </app-pet-list-item>
+</div>
+
+

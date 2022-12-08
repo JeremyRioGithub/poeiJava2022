@@ -1,0 +1,19 @@
+.pet {
+  height: 100%;
+  display:flex;
+
+  app-pet-list, app-pet-detail {
+    padding: 10px;
+  }
+  app-pet-list {
+    //border: 1px solid red;
+    //background: red;
+    flex:1; // largeur: 1/somme(1+autres valeurs flex). Ici, autre flex=2, donc prend 1/3 de la largeur.
+  }
+
+  app-pet-detail {
+    //border: 1px solid blue;
+    //background: blue;
+    flex:2;
+  }
+}
