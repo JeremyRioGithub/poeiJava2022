@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { IPet } from '../../model/pet';
+import { PetService } from '../../pet.service';
 
 @Component({
   selector: 'app-pet-list-item',
@@ -9,6 +10,16 @@ import { IPet } from '../../model/pet';
 })
 export class PetListItemComponent implements OnInit {
   @Input() petChild!: IPet;
-  constructor(){}
-  ngOnInit(): void {}
+
+  get selectedPet(){
+    if (!this.petService.selectedPet)
+      {return 0;}
+    return this.petService.selectedPet.id;
+  }
+
+  constructor(private petService: PetService){}
+
+  ngOnInit(): void {
+    console.log()
+  }
 }

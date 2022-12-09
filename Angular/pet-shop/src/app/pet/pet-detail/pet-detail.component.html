@@ -7,6 +7,7 @@
       </div>
       <h2>{{selectedPet.species}}</h2>
     </div>
+    <img [src]="selectedPet.imageUrl" [alt]="selectedPet.name">
     <p class="price">{{selectedPet.price}}</p>
     <p  [class]="selectedPet.isAvailable ? 'available' : 'sold'">{{selectedPet.isAvailable ? 'Disponible' : 'Vendu'}}</p>
   </div>

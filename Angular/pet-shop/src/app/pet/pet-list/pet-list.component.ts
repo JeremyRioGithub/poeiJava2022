@@ -17,7 +17,7 @@ export class PetListComponent {
   }
 
   onClickPet(petId: number){
-    console.log("pet-list/selectPet: "+petId);
+    // console.log("pet-list/selectPet: "+petId);
     return this.petService.selectPet(petId);
   }
 }

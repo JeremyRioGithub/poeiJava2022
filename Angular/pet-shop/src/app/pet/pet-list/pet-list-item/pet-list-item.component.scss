@@ -5,7 +5,7 @@
   padding: 20px;
   text-align: center;
   cursor: pointer;
-  &:hover{
+  &:hover, &.selected{ //si souris au dessus ou si selectionné (petChild.id==selectPet.id), alors ce style
     background-color: blueviolet;
     color: white;
   }

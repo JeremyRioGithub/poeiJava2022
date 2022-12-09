@@ -5,4 +5,6 @@ export interface IPet {
   species: Species;
   price:number|undefined;
   isAvailable: boolean;
+  imageUrl?: string;
+  // le point d'interrogation sur une propriété = pas obligatoire
 }
