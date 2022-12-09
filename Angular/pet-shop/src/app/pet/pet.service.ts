@@ -1,30 +1,23 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IPet, Species } from './model/pet';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PetService implements OnInit{
-  private _pets: IPet[] = [];
+export class PetService{
+  pets: IPet[] = [];
 
-  private _selectedPetId: number | null=null;
-
-  get pets(){
-    return this._pets.map((pet) => {return {...pet};})
-  }
+  selectedPetId: number | null=null;
 
   get selectedPet(){
-    if (!this._pets.some((pet) => pet.id === this._selectedPetId)){
+    if (!this.pets.some((pet) => pet.id === this.selectedPetId)){
       return null;
     }
-    return {...this.pets.find((pet) => pet.id === this._selectedPetId)};
+    return {...this.pets.find((pet) => pet.id === this.selectedPetId)};
   }
 
   constructor() {
     this.createPets();
-  }
-
-  ngOnInit(): void {
   }
 
   private createPets(): void {
@@ -39,15 +32,12 @@ export class PetService implements OnInit{
         price: prices[i],
         isAvailable: i%2 === 0,
       }
-      this._pets.push(pet);
+      this.pets.push(pet);
     };
   }
-  selectPet(petId:number){
-    this._selectedPetId = petId;
-  }
-  // selectProduct(productId:number){
-  //   this._selectedProductId = productId;
-  // }
 
+  selectPet(petId:number){
+    this.selectedPetId = petId;
+  }
 
 }

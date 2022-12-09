@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { IPet } from '../model/pet';
+import { Component } from '@angular/core';
 import { PetService } from '../pet.service';
 
 @Component({
@@ -7,20 +6,12 @@ import { PetService } from '../pet.service';
   templateUrl: './pet-detail.component.html',
   styleUrls: ['./pet-detail.component.scss']
 })
-export class PetDetailComponent implements OnInit {
-  // @Input() detailPet: IPet | undefined | null=null;
+export class PetDetailComponent {
 
   constructor(private petService: PetService){}
 
   get selectedPet(){
     return this.petService.selectedPet;
-  }
-  get selectedPetName(){
-    return this.petService.selectedPet?.name;
-  }
-
-  ngOnInit(): void {
-    //console.log(this.chosenPet);
   }
 
 }
