@@ -14,6 +14,21 @@ export class PetService {
     this.createPets();
   }
 
+  createPet(nom: string, espece: Species, prix: number, disponibilite: boolean, url: string){
+    const ids: number[] = this.pets.map((pet) => pet.id); // tableau avec tous les id des pets
+    const max: number = Math.max(...ids) // Math.max(id1, id2, id3, id4)
+    const newId: number = max + 1; // increment l'id max parmi ceux recus de 1
+    const newPet: IPet= { //cree un new pet avec l'id incremente de 1
+      id: newId,
+      name: nom,
+      species: espece,
+      price: prix,
+      isAvailable: disponibilite,
+      imageUrl: url,
+    }
+    this.pets.push(newPet); //ajoute le new pet à la liste
+
+  }
   togglePetCreation(): void {
     this.isCreatingPet = !this.isCreatingPet;
   }

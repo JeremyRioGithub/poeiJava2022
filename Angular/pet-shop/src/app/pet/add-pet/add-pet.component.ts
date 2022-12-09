@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Species } from '../model/pet';
+import { PetService } from '../pet.service';
 
 @Component({
   selector: 'app-add-pet',
@@ -18,9 +19,12 @@ export class AddPetComponent {
     imageUrl: '',
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private petService: PetService) {}
 
   onSubmit() {
+    if(this.petForm.valid){
+      this.petService.createPet(this.petForm.value.name, this.petForm.value.species, this.petForm.value.price, this.petForm.value.isAvailable, this.petForm.value.imageUrl);
+    };
     console.log(this.petForm.value);
     console.log(this.petForm.valid);
   }
