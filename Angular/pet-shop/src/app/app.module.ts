@@ -8,10 +8,19 @@ import { PetDetailComponent } from './pet/pet-detail/pet-detail.component';
 import { PetListItemComponent } from './pet/pet-list/pet-list-item/pet-list-item.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddPetComponent } from './pet/add-pet/add-pet.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, PetComponent, PetListComponent, PetDetailComponent, PetListItemComponent, NavbarComponent, AddPetComponent],
-  imports: [BrowserModule],
+  declarations: [
+    AppComponent,
+    PetComponent,
+    PetListComponent,
+    PetDetailComponent,
+    PetListItemComponent,
+    NavbarComponent,
+    AddPetComponent,
+  ],
+  imports: [BrowserModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
