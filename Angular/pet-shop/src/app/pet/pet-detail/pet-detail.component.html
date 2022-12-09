@@ -1,20 +1,17 @@
 <div class="pet-detail">
-
-  <div *ngIf="selectedPet; else noPetSelected" class="pet-info">
-    <div>
-      <div class="title">
-        <h1>{{selectedPet.name}}</h1>
-      </div>
-      <h2>{{selectedPet.species}}</h2>
+  <div *ngIf="pet; else noPetSelected" class="pet-info">
+    <div class="title">
+      <h1>{{ pet.name | titlecase }}</h1>
+      <h2>{{ pet.species }}</h2>
     </div>
-    <img [src]="selectedPet.imageUrl" [alt]="selectedPet.name">
-    <p class="price">{{selectedPet.price}}</p>
-    <p  [class]="selectedPet.isAvailable ? 'available' : 'sold'">{{selectedPet.isAvailable ? 'Disponible' : 'Vendu'}}</p>
+    <img [src]="pet.imageUrl" [alt]="pet.name" />
+    <p class="price">{{ pet.price }} €</p>
+    <p [class]="pet.isAvailable ? 'available' : 'sold'">
+      {{ pet.isAvailable ? "Disponible" : "Vendu" }}
+    </p>
   </div>
-
 </div>
 
 <ng-template #noPetSelected>
-  <div class="no-pet-selected">Merci de selectionner un animal</div>
+  <div class="no-pet-selected">Merci de sélectionner un animal</div>
 </ng-template>
-

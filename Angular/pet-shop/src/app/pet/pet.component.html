@@ -1,9 +1,7 @@
-<div class="pet-read-container">
-  <div class="pet" *ngIf="!isCreatingPet">
+<div class="pet">
+  <div class="pet-read-container" *ngIf="!isCreatingPet">
     <app-pet-list></app-pet-list>
     <app-pet-detail></app-pet-detail>
   </div>
-  <div>
-    <app-add-pet></app-add-pet>
-  </div>
+  <app-add-pet *ngIf="isCreatingPet"></app-add-pet>
 </div>

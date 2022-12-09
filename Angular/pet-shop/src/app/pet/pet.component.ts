@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
-import { PetService } from "./pet.service";
+import { Component } from '@angular/core';
+
+import { PetService } from './pet.service';
 
 @Component({
   selector: 'app-pet',
@@ -7,9 +8,9 @@ import { PetService } from "./pet.service";
   styleUrls: ['./pet.component.scss'],
 })
 export class PetComponent {
-
-  get isCreatingPet(): boolean{
+  get isCreatingPet(): boolean {
     return this.petService.isCreatingPet;
   }
-  constructor(private petService: PetService){}
+
+  constructor(private petService: PetService) {}
 }

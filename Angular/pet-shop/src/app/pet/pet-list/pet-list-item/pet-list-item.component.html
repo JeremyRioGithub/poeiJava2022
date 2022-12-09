@@ -1,5 +1,3 @@
-<div class="pet-list-item" [ngClass]="{selected: selectedPet === petChild.id}">
-  <p>{{petChild.name | titlecase}}</p>
-  <!-- le pipe titlecase permet de mettre une majuscule aux items en liste -->
+<div class="pet-list-item" [ngClass]="{selected: pet.id === selectedPetId}">
+  <p>{{ pet.name | titlecase }}</p>
 </div>
-

@@ -1,11 +1,12 @@
-.pet-list-item{
+.pet-list-item {
   border: 1px solid blueviolet;
-  border-radius: 4px;
+  border-radius: 10px;
   margin: 5px 0;
   padding: 20px;
   text-align: center;
   cursor: pointer;
-  &:hover, &.selected{ //si souris au dessus ou si selectionné (petChild.id==selectPet.id), alors ce style
+
+  &:hover, &.selected {
     background-color: blueviolet;
     color: white;
   }
