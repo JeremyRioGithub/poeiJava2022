@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PetService } from '../pet/pet.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  constructor(private petService: PetService ){}
+
+  onTogglePetCreation(){
+    this.petService.togglePetCreation();
+    console.log(this.petService.isCreatingPet);
+  }
 }

@@ -6,8 +6,8 @@ import { IPet, Species } from './model/pet';
 })
 export class PetService{
   pets: IPet[] = [];
-
   selectedPetId: number | null=null;
+  isCreatingPet: boolean =false;
 
   get selectedPet(){
     if (!this.pets.some((pet) => pet.id === this.selectedPetId)){
@@ -43,6 +43,11 @@ export class PetService{
 
   selectPet(petId:number){
     this.selectedPetId = petId;
+  }
+
+  togglePetCreation(): void{
+    this.isCreatingPet=!this.isCreatingPet;
+    //console.log(this.isCreatingpet);
   }
 
 }
