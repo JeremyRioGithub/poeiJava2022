@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { IPet, Species } from './model/pet';
 
@@ -38,20 +38,27 @@ export class PetService {
   //   imageUrl: string
   // ): void {
 
-  //   const pet: IPet = {
-  //     id: maxId + 1,
-  //     name,
-  //     species,
-  //     price,
-  //     isAvailable,
-  //     imageUrl,
-  //   };
+    // const pet: IPet = {
+    //   id: maxId + 1,
+    //   name,
+    //   species,
+    //   price,
+    //   isAvailable,
+    //   imageUrl,
+    // };
 
-  //   this.pets.push(pet);
+    // this.pets.push(pet);
 
   //   this.isCreatingPet = false;
   // }
 
+  postPets(pet: any): any {
+    return this.http.post(this.petsUrl, pet).pipe(
+      map((res)=>{this.getPets(); return res;})
+      //.subscribe();
+      // renvoie {key: etc}
+    );
+  }
   getPets(): void {
     this.http
       .get(this.petsUrl)
@@ -62,12 +69,12 @@ export class PetService {
           for (const key in res) {
             const pet: IPet = {
               id: key,
-              // ...res[key],
-              name: res[key].name,
-              isAvailable: res[key].isAvailable,
-              imageUrl: res[key].imageUrl,
-              price: res[key].price,
-              species: res[key].species,
+              ...res[key],
+              // name: res[key].name,
+              // isAvailable: res[key].isAvailable,
+              // imageUrl: res[key].imageUrl,
+              // price: res[key].price,
+              // species: res[key].species,
             };
             pets.push(pet);
           }
@@ -77,6 +84,7 @@ export class PetService {
       )
       .subscribe((res: IPet[]) => {
         this.pets = res;
+        // console.log(res)
       });
   }
 }
