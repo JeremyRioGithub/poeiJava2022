@@ -11,9 +11,9 @@ import { PetService } from '../../pet.service';
 export class PetListItemComponent {
   @Input() pet!: IPet;
 
-  get selectedPetId(): number {
+  get selectedPetId(): string {
     if (!this.petService.selectedPet) {
-      return 0;
+      return '';
     }
     return this.petService.selectedPet.id;
   }

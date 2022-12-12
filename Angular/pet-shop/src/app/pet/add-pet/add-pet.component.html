@@ -1,4 +1,4 @@
-<form [formGroup]="petForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="petForm" (ngSubmit)="onSubmit()" class="add-pet">
   <input type="text" formControlName="name" placeholder="Nom" />
 
   <select formControlName="species">
@@ -7,10 +7,12 @@
 
   <input type="number" formControlName="price" placeholder="Prix" />
 
-  <input type="checkbox" formControlName="isAvailable" />
-  <label>Disponible</label>
+  <div>
+    <input id="availability" type="checkbox" formControlName="isAvailable" />
+    <label for="availability">Disponible</label>
+  </div>
 
   <input type="text" formControlName="imageUrl" placeholder="URL de l'image" />
 
-  <button [disabled]="!this.petForm.valid">Créer mon Animal</button>
+  <button [disabled]="petForm.invalid">Créer mon Animal</button>
 </form>
