@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from "./guard/auth.guard";
 
 import { HomeComponent } from "./home/home.component"
 import { AddPetComponent } from "./pet/add-pet/add-pet.component";
@@ -14,6 +15,7 @@ const routes: Routes = [
         children: [
             {
                 path: 'index', component: PetIndexComponent,
+                canActivate: [AuthGuard],
                 children: [
                     {path: ':id', component: PetDetailComponent},
                     {path: '**', redirectTo: ''},

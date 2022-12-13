@@ -1,5 +1,6 @@
+
 <div class="navbar">
   <a routerLink="home">Home</a>
   <a routerLink="pet">Pet</a>
-  <!-- <button (click)="onTogglePetCreation()">Créer / Consulter</button> -->
+  <button (click)="onToggleAuth()" [ngClass]="{green: isAuth, red: !isAuth}">Status</button>
 </div>
