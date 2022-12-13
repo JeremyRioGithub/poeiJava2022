@@ -9,7 +9,7 @@ import { PetService } from '../pet/pet.service';
 export class NavbarComponent {
   constructor(private petService: PetService) {}
 
-  onTogglePetCreation() {
-    this.petService.togglePetCreation();
-  }
+  // onTogglePetCreation() {
+  //   this.petService.togglePetCreation();
+  // }
 }

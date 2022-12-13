@@ -1,4 +1,7 @@
 <div class="pet-list">
+  <!-- <button routerLink="../add">Nouveau</button> -->
+  <button [routerLink]="['..','add']">Nouveau</button>
+  <!-- <button >Nouveau</button> -->
   <app-pet-list-item
     *ngFor="let pet of petList"
     [pet]="pet"

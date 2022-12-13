@@ -23,9 +23,7 @@ export class AddPetComponent {
 
   onSubmit() {
     if (this.petForm.valid) {
-      this.petService.postPets(
-        this.petForm.value
-      ).subscribe(()=>{this.petService.togglePetCreation()});
+      this.petService.createPet(this.petForm.value);
     }
   }
 }
