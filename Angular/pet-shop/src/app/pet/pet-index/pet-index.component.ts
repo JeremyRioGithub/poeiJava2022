@@ -7,9 +7,6 @@ import { PetService } from '../pet.service';
   styleUrls: ['./pet-index.component.scss']
 })
 export class PetIndexComponent {
-  constructor(private petService: PetService){}
+  constructor(){}
 
-  get isCreatingPet(): boolean {
-    return this.petService.isCreatingPet;
-  }
 }

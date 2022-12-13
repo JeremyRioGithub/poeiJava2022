@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Route } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { IPet } from '../../model/pet';
 import { PetService } from '../../pet.service';
@@ -8,10 +10,27 @@ import { PetService } from '../../pet.service';
   templateUrl: './pet-detail.component.html',
   styleUrls: ['./pet-detail.component.scss'],
 })
-export class PetDetailComponent {
-  get pet(): IPet | undefined | null {
-    return this.petService.selectedPet;
+export class PetDetailComponent implements OnInit, OnDestroy {
+  pet: IPet | null=null;
+  private subs: Subscription[]=[];
+
+  constructor(private petService: PetService, private route: ActivatedRoute) {}
+
+  ngOnInit(): void{
+    this.subs.push()
+    this.petService.petsReady$.subscribe(() => {
+      this.pet = this.petService.petWithId(this.route.snapshot.params['id']);
+    });
+     // PARAM: dès que la route change (les params), on récupère la propriété id de ce paramètre
+    this.route.params.subscribe((p: any) => {
+      this.pet = this.petService.petWithId(p.id);
+    });
   }
 
-  constructor(private petService: PetService) {}
+  ngOnDestroy(): void {
+    for (const sub of this.subs) {
+      sub.unsubscribe();
+    }
+    // this.pet = this.petService.petWithId('');
+  }
 }

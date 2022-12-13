@@ -2,9 +2,9 @@
   <!-- <button routerLink="../add">Nouveau</button> -->
   <button [routerLink]="['..','add']">Nouveau</button>
   <!-- <button >Nouveau</button> -->
+
   <app-pet-list-item
     *ngFor="let pet of petList"
     [pet]="pet"
-    (click)="onClickPet(pet.id)"
   ></app-pet-list-item>
 </div>

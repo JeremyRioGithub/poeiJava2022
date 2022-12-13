@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { IPet } from '../../../model/pet';
 import { PetService } from '../../../pet.service';
@@ -11,12 +12,6 @@ import { PetService } from '../../../pet.service';
 export class PetListItemComponent {
   @Input() pet!: IPet;
 
-  get selectedPetId(): string {
-    if (!this.petService.selectedPet) {
-      return '';
-    }
-    return this.petService.selectedPet.id;
-  }
+  constructor(private petService: PetService, private route: ActivatedRoute) {}
 
-  constructor(private petService: PetService) {}
 }

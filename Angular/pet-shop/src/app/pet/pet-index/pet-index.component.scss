@@ -8,12 +8,12 @@
       flex: 1;
     }
 
-    app-pet-detail {
+    .router-outlet {
       flex: 2;
     }
 
     app-pet-list,
-    app-pet-detail {
+    .router-outlet {
       padding: 10px;
     }
   }
