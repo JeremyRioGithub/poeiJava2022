@@ -8,10 +8,13 @@ import { PetService } from '../pet/pet.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(private petService: PetService, private auth: AuthService) {}
-  get isAuth(){
-    return this.auth.isAuth;
+
+  isAuth: boolean = this.auth.isAuth$.getValue();
+
+  constructor(private petService: PetService, private auth: AuthService) {
+    this.auth.isAuth$.subscribe((isAuth) => {this.isAuth = isAuth});
   }
+
   onToggleAuth() {
     this.auth.toggleAuth();
   }

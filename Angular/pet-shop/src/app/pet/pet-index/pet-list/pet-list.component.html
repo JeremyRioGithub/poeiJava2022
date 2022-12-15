@@ -3,8 +3,13 @@
   <button [routerLink]="['..','add']">Nouveau</button>
   <!-- <button >Nouveau</button> -->
 
-  <app-pet-list-item
+  <!-- <app-pet-list-item
     *ngFor="let pet of petList"
+    [pet]="pet"
+  ></app-pet-list-item> -->
+
+  <app-pet-list-item
+    *ngFor="let pet of (petList$ | async)"
     [pet]="pet"
   ></app-pet-list-item>
 </div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, Subject } from 'rxjs';
+import { BehaviorSubject, map, Subject } from 'rxjs';
 
 import { IPet } from './model/pet';
 
@@ -11,7 +11,8 @@ import { IPet } from './model/pet';
 export class PetService {
   private petsUrl =
     'https://formation-6e588-default-rtdb.europe-west1.firebasedatabase.app/pets.json';
-  pets: IPet[] = [];
+  // pets: IPet[] = [];
+  pets$ = new BehaviorSubject<IPet[]>([]);
   petsReady$ = new Subject<void>();
 
   constructor(private http: HttpClient, private router: Router) {
@@ -19,10 +20,10 @@ export class PetService {
   }
 
   petWithId(petId: string): IPet | null {
-    if (!this.pets.some((pet) => pet.id === petId)) {
+    if (!this.pets$.getValue().some((pet) => pet.id === petId)) {
       return null;
     }
-    return this.pets.find((pet) => pet.id === petId)!;
+    return this.pets$.getValue().find((pet) => pet.id === petId)!;
   }
 
   createPet(petToCreate: any): void {
@@ -56,7 +57,8 @@ export class PetService {
         })
       )
       .subscribe((res: IPet[]) => {
-        this.pets = res;
+        // this.pets = res;
+        this.pets$.next(res);
         this.petsReady$.next();
       });
   }

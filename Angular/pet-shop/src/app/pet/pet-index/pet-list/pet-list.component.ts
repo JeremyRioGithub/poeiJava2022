@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { IPet } from '../../model/pet';
 import { PetService } from '../../pet.service';
@@ -10,13 +11,14 @@ import { PetService } from '../../pet.service';
   styleUrls: ['./pet-list.component.scss'],
 })
 export class PetListComponent implements OnInit {
-  constructor(private petService: PetService, private router: Router
-    // , private route: ActivatedRoute
-    ) {}
 
-  get petList(): IPet[] {
-    return this.petService.pets;
-  }
+  petList$: Observable<IPet[]> = this.petService.pets$.asObservable();
+
+  // get petList(): IPet[] {
+  //   return this.petService.pets;
+  // }
+
+  constructor(private petService: PetService, private router: Router) {}
 
   ngOnInit(): void {}
 
