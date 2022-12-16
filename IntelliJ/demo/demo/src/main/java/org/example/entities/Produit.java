@@ -1,8 +1,6 @@
-package org.example.model;
+package org.example.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -12,11 +10,20 @@ public class Produit {
     private int id;
     private String marque;
     private String reference;
+    @Temporal(TemporalType.DATE)
     private Date dateAchat;
     private double price;
     private int stock;
 
     public Produit() {
+    }
+
+    public Produit(String marque, String reference, Date dateAchat, double price, int stock) {
+        this.marque = marque;
+        this.reference = reference;
+        this.dateAchat = dateAchat;
+        this.price = price;
+        this.stock = stock;
     }
 
     public int getId() {

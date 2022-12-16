@@ -1,7 +1,6 @@
 package org.example;
 
-import org.example.model.Personne;
-import org.example.model.Produit;
+import org.example.entities.Produit;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

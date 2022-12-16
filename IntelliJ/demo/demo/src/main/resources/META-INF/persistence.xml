@@ -5,6 +5,8 @@
         <class>org.example.model.Personne</class>
         <class>org.example.model.PersonnePK</class>
         <class>org.example.model.PersonneWithPK</class>
+        <class>org.example.entities.Produit</class>
+        <class>org.example.services.ProduitService</class>
 
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

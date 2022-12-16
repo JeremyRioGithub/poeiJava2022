@@ -2,7 +2,6 @@ package org.example;
 
 import org.example.model.Personne;
 import org.example.model.PersonneWithPK;
-import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 
 import javax.persistence.*;
 import java.util.List;
