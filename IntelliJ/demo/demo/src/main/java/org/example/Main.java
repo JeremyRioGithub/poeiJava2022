@@ -124,6 +124,9 @@ public class Main {
             System.out.println("nom: "+ p.getNom());
         }
 
+
+
+
         em.close();
         emf.close();
     }
