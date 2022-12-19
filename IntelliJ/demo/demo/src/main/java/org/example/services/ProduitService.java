@@ -3,9 +3,10 @@ package org.example.services;
 import org.example.entities.Produit;
 import org.example.interfaces.IDAO;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Date;
+import java.util.Scanner;
 
 public class ProduitService implements IDAO<Produit> {
 
@@ -59,5 +60,50 @@ public class ProduitService implements IDAO<Produit> {
     public void close() {
         System.out.println("Close persistence");
         em.close();
+    }
+
+
+    @Override
+    public List<Produit> getAllProducts(){
+        Query query = em.createQuery("select p from Produit p");
+        List<Produit> list = query.getResultList();
+        return list;
+    }
+    @Override
+    public List<Produit> getProduitsSup(int price){
+        Query query = em.createQuery("select p from Produit p where p.price > "+price);
+        List<Produit> list = query.getResultList();
+        return list;
+    }
+
+    @Override
+    public List<Produit> getProduitsEntreDates(String dateAvant, String dateApres){
+        System.out.println(dateAvant+ "," +dateApres );
+        Query query = em.createQuery("select p from Produit p where p.dateAchat between '"+dateAvant+"' and '"+dateApres+"'");
+        System.out.println(query.getResultList());
+        List<Produit> list = query.getResultList();
+        if (list.size() != 0){
+            return list;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public List<Produit> filterByDate(Date min, Date max) throws Exception {
+        System.out.println("TESTED DATES: "+min.toString() + ", " + max.toString());
+        if(min.before(max)){
+            Query query= em.createQuery("select p from Produit p where dateAchat >= :min and dateAchat <= :max");
+            query.setParameter("min",min);
+            query.setParameter("max",max);
+            return query.getResultList();
+        }
+        throw new Exception("error date");
+    }
+
+    public double getTotalPriceByBrand(String brand) {
+        Query query = em.createQuery("SELECT SUM(price) FROM Produit p WHERE marque =:brandS");
+        query.setParameter("brandS", brand);
+        return (double) query.getSingleResult();
     }
 }
