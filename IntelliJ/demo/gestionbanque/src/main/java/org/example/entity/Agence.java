@@ -8,6 +8,7 @@ import java.util.Collection;
 @Table(name= "agence")
 public class Agence {
     @Id
+    //@GeneratedValue
     private int id;
 
     private String adresse;

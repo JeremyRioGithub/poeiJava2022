@@ -186,7 +186,7 @@ public class Main {
         // demande à l'utilisateur de se lier à un compte existant:
         scanner = new Scanner(System.in);
         System.out.println("Chose account to be linked to: ");
-        for (Compte compteAffiche : newListComptes) {
+        for (Compte compteAffiche : listComptes) {
             System.out.print(compteAffiche.getId() + ", ");
         }
         Integer chosenCompte = scanner.nextInt();
