@@ -20,10 +20,18 @@ public class Employee {
     private Department d;
 
     @ManyToMany
-    @JoinTable(name="EMP_PROJ",
-    joinColumns = @JoinColumn(name="EMP_ID", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name="PROJ_ID", referencedColumnName = "id"))
+    @JoinTable(name= "EMP_PROJ",
+            joinColumns = @JoinColumn(name= "EMP_ID", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name= "PROJ_ID", referencedColumnName = "id"))
     private Collection<Project> p;
+
+    public Collection<Project> getP() {
+        return p;
+    }
+
+    public void setP(Collection<Project> p) {
+        this.p = p;
+    }
 
     public Department getD() {
         return d;
