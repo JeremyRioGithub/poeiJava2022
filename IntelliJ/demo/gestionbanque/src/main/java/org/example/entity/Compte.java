@@ -1,31 +1,36 @@
 package org.example.entity;
 
+
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
 
 @Entity
-@Table(name= "comptes")
 public class Compte {
-    @Id
-    private int id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private String libelle;
 
+    @Column(nullable = false, length = 27)
+    private String iban;
+
+    @Column(precision = 10,scale = 2)
+    private double solde;
+
+    @ManyToMany(mappedBy = "comptes")
+    private List<Client> clients;
     @ManyToOne
-    @JoinColumn(name="AGENCE_ID")
+    @JoinColumn(name = "id_agence")
     private Agence agence;
 
-    @ManyToMany
-    @JoinTable(name= "compte_client",
-            joinColumns = @JoinColumn(name= "COMPTE_ID", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name= "CLIENT_ID", referencedColumnName = "id"))
-    private Collection<Client> clients;
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,19 +42,35 @@ public class Compte {
         this.libelle = libelle;
     }
 
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+
+    public double getSolde() {
+        return solde;
+    }
+
+    public void setSolde(double solde) {
+        this.solde = solde;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
+
     public Agence getAgence() {
         return agence;
     }
 
     public void setAgence(Agence agence) {
         this.agence = agence;
-    }
-
-    public Collection<Client> getClients() {
-        return clients;
-    }
-
-    public void setClients(Collection<Client> clients) {
-        this.clients = clients;
     }
 }

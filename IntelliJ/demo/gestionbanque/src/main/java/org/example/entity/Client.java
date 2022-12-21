@@ -1,25 +1,34 @@
 package org.example.entity;
 
+
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name= "clients")
 public class Client {
+
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nom;
 
     private String prenom;
 
-    @ManyToMany(mappedBy = "clients")
-    private Collection<Compte> comptes;
+    private Date naissance_d;
 
-    public int getId() {
+    @ManyToMany
+    @JoinTable(name= "client_compte",
+            joinColumns = @JoinColumn(name="client_id"),
+            inverseJoinColumns = @JoinColumn(name="compte_id"))
+    private List<Compte> comptes;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,11 +48,19 @@ public class Client {
         this.prenom = prenom;
     }
 
-    public Collection<Compte> getComptes() {
+    public Date getNaissance_d() {
+        return naissance_d;
+    }
+
+    public void setNaissance_d(Date naissance_d) {
+        this.naissance_d = naissance_d;
+    }
+
+    public List<Compte> getComptes() {
         return comptes;
     }
 
-    public void setComptes(Collection<Compte> comptes) {
+    public void setComptes(List<Compte> comptes) {
         this.comptes = comptes;
     }
 }
