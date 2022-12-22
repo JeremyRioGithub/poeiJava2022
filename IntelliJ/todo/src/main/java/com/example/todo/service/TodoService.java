@@ -55,8 +55,18 @@ public class TodoService implements IDAO<Todo> {
     }
 
     @Override
+    public List<Todo> findByEtat(boolean etat) {
+        if (etat){
+            List<Todo> todos = session.createQuery("from Todo where etat=0x01").list();
+            return todos;
+        }
+        List<Todo> todos = session.createQuery("from Todo where etat=0x00").list();
+        return todos;
+    }
+
+    @Override
     public List<Todo> findAll() {
-        List<Todo> todo = session.createQuery("from Todo").list();
-        return todo;
+        List<Todo> todos = session.createQuery("from Todo").list();
+        return todos;
     }
 }

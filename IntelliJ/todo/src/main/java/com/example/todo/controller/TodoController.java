@@ -60,6 +60,10 @@ public class TodoController {
         System.out.println("found with RequestParam: ID:"+todo.getId());
         return todo;
     }
+    @GetMapping("/findetat")
+    public List<Todo> findByIdEtat(@RequestParam("etat") boolean etat){
+        return todoService.findByEtat(etat);
+    }
 
     @GetMapping("/findall")
     public List<Todo> findAllTodo(){
