@@ -14,4 +14,8 @@ public class Todo {
     private String titre;
     private String description;
     private boolean etat;
+
+    public boolean getEtat() {
+        return(this.etat);
+    }
 }

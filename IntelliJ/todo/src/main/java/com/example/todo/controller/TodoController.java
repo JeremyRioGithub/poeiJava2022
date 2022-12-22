@@ -32,7 +32,7 @@ public class TodoController {
             System.out.println("updated: beforeMarque"+todoFound.getTitre()+" to afterMarque:"+todo.getDescription());
             todoFound.setTitre(todo.getTitre());
             todoFound.setDescription(todo.getDescription());
-            //todoFound.setEtat(todo.getEtat);
+            todoFound.setEtat(todo.getEtat());
             todoService.update(todoFound);
             return todoFound;
         }

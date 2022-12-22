@@ -49,7 +49,6 @@ public class TodoService implements IDAO<Todo> {
     @Override
     public Todo findById(int id) {
         Todo todo = null;
-        //todo = session.find(Todo.class, id); // fonctionne
         todo = (Todo) session.get(Todo.class, id);
         return todo;
     }
