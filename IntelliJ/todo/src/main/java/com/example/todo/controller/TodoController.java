@@ -29,11 +29,10 @@ public class TodoController {
     public Todo updateTodo(@PathVariable("id") int id, @RequestBody Todo todo){
         Todo todoFound = todoService.findById(id);
         if(todoFound != null) {
-            System.out.println("updated: beforeMarque"+todoFound.getMarque()+" to afterMarque:"+todo.getMarque());
-            todoFound.setMarque(todo.getMarque());
-            todoFound.setReference(todo.getReference());
-            todoFound.setPrix(todo.getPrix());
-            todoFound.setStock(todo.getStock());
+            System.out.println("updated: beforeMarque"+todoFound.getTitre()+" to afterMarque:"+todo.getDescription());
+            todoFound.setTitre(todo.getTitre());
+            todoFound.setDescription(todo.getDescription());
+            //todoFound.setEtat(todo.getEtat);
             todoService.update(todoFound);
             return todoFound;
         }
