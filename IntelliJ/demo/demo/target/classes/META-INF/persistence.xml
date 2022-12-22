@@ -10,6 +10,9 @@
         <class>org.example.model.Employee</class>
         <class>org.example.model.ParkingSpace</class>
         <class>org.example.model.Departement</class>
+        <class>org.example.entities.Agence</class>
+        <class>org.example.entities.Client</class>
+        <class>org.example.entities.Compte</class>
 
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

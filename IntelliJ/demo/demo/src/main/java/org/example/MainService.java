@@ -61,8 +61,8 @@ public class MainService {
             System.out.println(produit.getId()+" , "+produit.getMarque()+" , "+produit.getReference()+" , "+produit.getDateAchat()+" , "+produit.getPrice());
         }
         // Get product between dates, first function is String
-        ps.getProduitsEntreDates("2000-01-01", "2023-12-31");
-        for (Produit prod : ps.getProduitsEntreDates("2000-01-01", "2023-12-31")){
+        ps.getProduitsEntreDates("2000/01/01", "2023/12/31");
+        for (Produit prod : ps.getProduitsEntreDates("2000/01/01", "2023/12/31")){
             System.out.println(prod.getMarque());
         }
         // Get product between dates, second function is Date
