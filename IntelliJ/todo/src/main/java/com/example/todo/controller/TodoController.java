@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -63,6 +64,18 @@ public class TodoController {
     @GetMapping("/findetat")
     public List<Todo> findByIdEtat(@RequestParam("etat") boolean etat){
         return todoService.findByEtat(etat);
+    }
+    @GetMapping("/findSupDate")
+    public List<Todo> findOverDate(@RequestParam("date") Date date){
+        return todoService.findOverDate(date);
+    }
+    @GetMapping("/findInfDate")
+    public List<Todo> findUnderDate(@RequestParam("date") Date date){
+        return todoService.findUnderDate(date);
+    }
+    @GetMapping("/findNullDate")
+    public List<Todo> findNullDate(){
+        return todoService.findNullDate();
     }
 
     @GetMapping("/findall")

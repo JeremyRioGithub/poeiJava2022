@@ -4,8 +4,10 @@ import com.example.todo.entity.Todo;
 import com.example.todo.interfaces.IDAO;
 import com.example.todo.tools.ServiceHibernate;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -62,10 +64,31 @@ public class TodoService implements IDAO<Todo> {
         List<Todo> todos = session.createQuery("from Todo where etat=0x00").list();
         return todos;
     }
+    //pouvait etre fait avec une query en "isDone" pour checker le "true"/"false"
 
     @Override
     public List<Todo> findAll() {
         List<Todo> todos = session.createQuery("from Todo").list();
+        return todos;
+    }
+
+    public List<Todo> findOverDate(Date date) {
+        Query<Todo> query = session.createQuery("from Todo where Date > :date", Todo.class);
+        query.setParameter("date", date);
+        List<Todo> todos = query.list();
+        return todos;
+    }
+
+    public List<Todo> findUnderDate(Date date) {
+        Query<Todo> query = session.createQuery("from Todo where Date < :date", Todo.class);
+        query.setParameter("date", date);
+        List<Todo> todos = query.list();
+        return todos;
+    }
+
+    public List<Todo> findNullDate() {
+        Query<Todo> query = session.createQuery("from Todo where Date is null", Todo.class);
+        List<Todo> todos = query.list();
         return todos;
     }
 }

@@ -1,9 +1,9 @@
 package com.example.todo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Date;
 
 @Entity
 @Data
@@ -13,6 +13,9 @@ public class Todo {
     private int id;
     private String titre;
     private String description;
+
+    @Temporal(TemporalType.DATE)
+    private Date date;
     private boolean etat;
 
     public boolean getEtat() {
