@@ -1,6 +1,6 @@
 package com.example.demosogetisecurity.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
+
 import com.example.demosogetisecurity.model.Customer;
 import com.example.demosogetisecurity.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,25 +20,33 @@ public class LoginController {
     private CustomerRepository customerRepository;
 
     @Autowired
-    public PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
+
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody Customer customer){
         Customer savedCustomer = null;
         ResponseEntity response = null;
-
         try {
             String hashPwd = passwordEncoder.encode(customer.getPwd());
             customer.setPwd(hashPwd);
-            customer.setCreateDt(String.valueOf(( new Date(System.currentTimeMillis()))));
+            customer.setCreateDt(String.valueOf(new Date(System.currentTimeMillis())));
             savedCustomer = customerRepository.save(customer);
-            if (savedCustomer.getId()>0){
-                response = ResponseEntity.status(HttpStatus.CREATED).body("User was succesfully created");
+            if(savedCustomer.getId()>0){
+                response = ResponseEntity.status(HttpStatus.CREATED).body("User has succefully created");
             }
+        }catch (Exception e){
+            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exeception has occured due to " + e.getMessage());
         }
-        catch (Exception e) {
-            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exception has occured due to : " + e.getMessage());
-        }
+
         return response;
     }
+
+
+
+
+
+
+
+
 }
